@@ -6,7 +6,7 @@ import { TopBar } from "@/components/TopBar";
 import { PageShell } from "@/components/learning";
 import { SpeakButton } from "@/components/SpeakButton";
 import { Reward } from "@/components/Reward";
-import { fetchContent, type ContentItem } from "@/server/content.functions";
+import { fetchContent, type ContentItem } from "@/utils/content.functions";
 import { useProgress } from "@/hooks/use-progress";
 import type { Level } from "@/components/learning";
 
