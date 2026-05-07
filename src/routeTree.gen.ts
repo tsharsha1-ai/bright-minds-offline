@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as MathShapesRouteImport } from './routes/math.shapes'
 import { Route as MathNumbersRouteImport } from './routes/math.numbers'
 import { Route as MathCountingRouteImport } from './routes/math.counting'
+import { Route as MathCompareRouteImport } from './routes/math.compare'
 import { Route as MathAddsubRouteImport } from './routes/math.addsub'
 
 const MathRoute = MathRouteImport.update({
@@ -53,6 +54,11 @@ const MathCountingRoute = MathCountingRouteImport.update({
   path: '/counting',
   getParentRoute: () => MathRoute,
 } as any)
+const MathCompareRoute = MathCompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => MathRoute,
+} as any)
 const MathAddsubRoute = MathAddsubRouteImport.update({
   id: '/addsub',
   path: '/addsub',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/evs': typeof EvsRoute
   '/math': typeof MathRouteWithChildren
   '/math/addsub': typeof MathAddsubRoute
+  '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
   '/math/shapes': typeof MathShapesRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/evs': typeof EvsRoute
   '/math': typeof MathRouteWithChildren
   '/math/addsub': typeof MathAddsubRoute
+  '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
   '/math/shapes': typeof MathShapesRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/evs': typeof EvsRoute
   '/math': typeof MathRouteWithChildren
   '/math/addsub': typeof MathAddsubRoute
+  '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
   '/math/shapes': typeof MathShapesRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/evs'
     | '/math'
     | '/math/addsub'
+    | '/math/compare'
     | '/math/counting'
     | '/math/numbers'
     | '/math/shapes'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/evs'
     | '/math'
     | '/math/addsub'
+    | '/math/compare'
     | '/math/counting'
     | '/math/numbers'
     | '/math/shapes'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/evs'
     | '/math'
     | '/math/addsub'
+    | '/math/compare'
     | '/math/counting'
     | '/math/numbers'
     | '/math/shapes'
@@ -181,6 +193,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MathCountingRouteImport
       parentRoute: typeof MathRoute
     }
+    '/math/compare': {
+      id: '/math/compare'
+      path: '/compare'
+      fullPath: '/math/compare'
+      preLoaderRoute: typeof MathCompareRouteImport
+      parentRoute: typeof MathRoute
+    }
     '/math/addsub': {
       id: '/math/addsub'
       path: '/addsub'
@@ -193,6 +212,7 @@ declare module '@tanstack/react-router' {
 
 interface MathRouteChildren {
   MathAddsubRoute: typeof MathAddsubRoute
+  MathCompareRoute: typeof MathCompareRoute
   MathCountingRoute: typeof MathCountingRoute
   MathNumbersRoute: typeof MathNumbersRoute
   MathShapesRoute: typeof MathShapesRoute
@@ -200,6 +220,7 @@ interface MathRouteChildren {
 
 const MathRouteChildren: MathRouteChildren = {
   MathAddsubRoute: MathAddsubRoute,
+  MathCompareRoute: MathCompareRoute,
   MathCountingRoute: MathCountingRoute,
   MathNumbersRoute: MathNumbersRoute,
   MathShapesRoute: MathShapesRoute,
