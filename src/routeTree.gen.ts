@@ -37,6 +37,12 @@ import { Route as EnglishSentencesRouteImport } from './routes/english.sentences
 import { Route as EnglishPhonicsRouteImport } from './routes/english.phonics'
 import { Route as EnglishDigraphsRouteImport } from './routes/english.digraphs'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
+import { Route as EnglishPhonicsShortVowelsRouteImport } from './routes/english.phonics.short-vowels'
+import { Route as EnglishPhonicsRhymesRouteImport } from './routes/english.phonics.rhymes'
+import { Route as EnglishPhonicsLongVowelsRouteImport } from './routes/english.phonics.long-vowels'
+import { Route as EnglishPhonicsLetterSoundsRouteImport } from './routes/english.phonics.letter-sounds'
+import { Route as EnglishPhonicsCvcWordsRouteImport } from './routes/english.phonics.cvc-words'
+import { Route as EnglishPhonicsBlendsRouteImport } from './routes/english.phonics.blends'
 
 const ProfilesRoute = ProfilesRouteImport.update({
   id: '/profiles',
@@ -178,6 +184,39 @@ const EnglishAlphabetRoute = EnglishAlphabetRouteImport.update({
   path: '/english/alphabet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnglishPhonicsShortVowelsRoute =
+  EnglishPhonicsShortVowelsRouteImport.update({
+    id: '/short-vowels',
+    path: '/short-vowels',
+    getParentRoute: () => EnglishPhonicsRoute,
+  } as any)
+const EnglishPhonicsRhymesRoute = EnglishPhonicsRhymesRouteImport.update({
+  id: '/rhymes',
+  path: '/rhymes',
+  getParentRoute: () => EnglishPhonicsRoute,
+} as any)
+const EnglishPhonicsLongVowelsRoute =
+  EnglishPhonicsLongVowelsRouteImport.update({
+    id: '/long-vowels',
+    path: '/long-vowels',
+    getParentRoute: () => EnglishPhonicsRoute,
+  } as any)
+const EnglishPhonicsLetterSoundsRoute =
+  EnglishPhonicsLetterSoundsRouteImport.update({
+    id: '/letter-sounds',
+    path: '/letter-sounds',
+    getParentRoute: () => EnglishPhonicsRoute,
+  } as any)
+const EnglishPhonicsCvcWordsRoute = EnglishPhonicsCvcWordsRouteImport.update({
+  id: '/cvc-words',
+  path: '/cvc-words',
+  getParentRoute: () => EnglishPhonicsRoute,
+} as any)
+const EnglishPhonicsBlendsRoute = EnglishPhonicsBlendsRouteImport.update({
+  id: '/blends',
+  path: '/blends',
+  getParentRoute: () => EnglishPhonicsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -185,7 +224,7 @@ export interface FileRoutesByFullPath {
   '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/digraphs': typeof EnglishDigraphsRoute
-  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/phonics': typeof EnglishPhonicsRouteWithChildren
   '/english/sentences': typeof EnglishSentencesRoute
   '/english/sight-words': typeof EnglishSightWordsRoute
   '/english/spelling': typeof EnglishSpellingRoute
@@ -208,6 +247,12 @@ export interface FileRoutesByFullPath {
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
+  '/english/phonics/blends': typeof EnglishPhonicsBlendsRoute
+  '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
+  '/english/phonics/letter-sounds': typeof EnglishPhonicsLetterSoundsRoute
+  '/english/phonics/long-vowels': typeof EnglishPhonicsLongVowelsRoute
+  '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
+  '/english/phonics/short-vowels': typeof EnglishPhonicsShortVowelsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -215,7 +260,7 @@ export interface FileRoutesByTo {
   '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/digraphs': typeof EnglishDigraphsRoute
-  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/phonics': typeof EnglishPhonicsRouteWithChildren
   '/english/sentences': typeof EnglishSentencesRoute
   '/english/sight-words': typeof EnglishSightWordsRoute
   '/english/spelling': typeof EnglishSpellingRoute
@@ -238,6 +283,12 @@ export interface FileRoutesByTo {
   '/english': typeof EnglishIndexRoute
   '/evs': typeof EvsIndexRoute
   '/math': typeof MathIndexRoute
+  '/english/phonics/blends': typeof EnglishPhonicsBlendsRoute
+  '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
+  '/english/phonics/letter-sounds': typeof EnglishPhonicsLetterSoundsRoute
+  '/english/phonics/long-vowels': typeof EnglishPhonicsLongVowelsRoute
+  '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
+  '/english/phonics/short-vowels': typeof EnglishPhonicsShortVowelsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -246,7 +297,7 @@ export interface FileRoutesById {
   '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/digraphs': typeof EnglishDigraphsRoute
-  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/phonics': typeof EnglishPhonicsRouteWithChildren
   '/english/sentences': typeof EnglishSentencesRoute
   '/english/sight-words': typeof EnglishSightWordsRoute
   '/english/spelling': typeof EnglishSpellingRoute
@@ -269,6 +320,12 @@ export interface FileRoutesById {
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
+  '/english/phonics/blends': typeof EnglishPhonicsBlendsRoute
+  '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
+  '/english/phonics/letter-sounds': typeof EnglishPhonicsLetterSoundsRoute
+  '/english/phonics/long-vowels': typeof EnglishPhonicsLongVowelsRoute
+  '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
+  '/english/phonics/short-vowels': typeof EnglishPhonicsShortVowelsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -301,6 +358,12 @@ export interface FileRouteTypes {
     | '/english/'
     | '/evs/'
     | '/math/'
+    | '/english/phonics/blends'
+    | '/english/phonics/cvc-words'
+    | '/english/phonics/letter-sounds'
+    | '/english/phonics/long-vowels'
+    | '/english/phonics/rhymes'
+    | '/english/phonics/short-vowels'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -331,6 +394,12 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/english/phonics/blends'
+    | '/english/phonics/cvc-words'
+    | '/english/phonics/letter-sounds'
+    | '/english/phonics/long-vowels'
+    | '/english/phonics/rhymes'
+    | '/english/phonics/short-vowels'
   id:
     | '__root__'
     | '/'
@@ -361,6 +430,12 @@ export interface FileRouteTypes {
     | '/english/'
     | '/evs/'
     | '/math/'
+    | '/english/phonics/blends'
+    | '/english/phonics/cvc-words'
+    | '/english/phonics/letter-sounds'
+    | '/english/phonics/long-vowels'
+    | '/english/phonics/rhymes'
+    | '/english/phonics/short-vowels'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -369,7 +444,7 @@ export interface RootRouteChildren {
   ProfilesRoute: typeof ProfilesRoute
   EnglishAlphabetRoute: typeof EnglishAlphabetRoute
   EnglishDigraphsRoute: typeof EnglishDigraphsRoute
-  EnglishPhonicsRoute: typeof EnglishPhonicsRoute
+  EnglishPhonicsRoute: typeof EnglishPhonicsRouteWithChildren
   EnglishSentencesRoute: typeof EnglishSentencesRoute
   EnglishSightWordsRoute: typeof EnglishSightWordsRoute
   EnglishSpellingRoute: typeof EnglishSpellingRoute
@@ -592,8 +667,72 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishAlphabetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/english/phonics/short-vowels': {
+      id: '/english/phonics/short-vowels'
+      path: '/short-vowels'
+      fullPath: '/english/phonics/short-vowels'
+      preLoaderRoute: typeof EnglishPhonicsShortVowelsRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
+    }
+    '/english/phonics/rhymes': {
+      id: '/english/phonics/rhymes'
+      path: '/rhymes'
+      fullPath: '/english/phonics/rhymes'
+      preLoaderRoute: typeof EnglishPhonicsRhymesRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
+    }
+    '/english/phonics/long-vowels': {
+      id: '/english/phonics/long-vowels'
+      path: '/long-vowels'
+      fullPath: '/english/phonics/long-vowels'
+      preLoaderRoute: typeof EnglishPhonicsLongVowelsRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
+    }
+    '/english/phonics/letter-sounds': {
+      id: '/english/phonics/letter-sounds'
+      path: '/letter-sounds'
+      fullPath: '/english/phonics/letter-sounds'
+      preLoaderRoute: typeof EnglishPhonicsLetterSoundsRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
+    }
+    '/english/phonics/cvc-words': {
+      id: '/english/phonics/cvc-words'
+      path: '/cvc-words'
+      fullPath: '/english/phonics/cvc-words'
+      preLoaderRoute: typeof EnglishPhonicsCvcWordsRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
+    }
+    '/english/phonics/blends': {
+      id: '/english/phonics/blends'
+      path: '/blends'
+      fullPath: '/english/phonics/blends'
+      preLoaderRoute: typeof EnglishPhonicsBlendsRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
+    }
   }
 }
+
+interface EnglishPhonicsRouteChildren {
+  EnglishPhonicsBlendsRoute: typeof EnglishPhonicsBlendsRoute
+  EnglishPhonicsCvcWordsRoute: typeof EnglishPhonicsCvcWordsRoute
+  EnglishPhonicsLetterSoundsRoute: typeof EnglishPhonicsLetterSoundsRoute
+  EnglishPhonicsLongVowelsRoute: typeof EnglishPhonicsLongVowelsRoute
+  EnglishPhonicsRhymesRoute: typeof EnglishPhonicsRhymesRoute
+  EnglishPhonicsShortVowelsRoute: typeof EnglishPhonicsShortVowelsRoute
+}
+
+const EnglishPhonicsRouteChildren: EnglishPhonicsRouteChildren = {
+  EnglishPhonicsBlendsRoute: EnglishPhonicsBlendsRoute,
+  EnglishPhonicsCvcWordsRoute: EnglishPhonicsCvcWordsRoute,
+  EnglishPhonicsLetterSoundsRoute: EnglishPhonicsLetterSoundsRoute,
+  EnglishPhonicsLongVowelsRoute: EnglishPhonicsLongVowelsRoute,
+  EnglishPhonicsRhymesRoute: EnglishPhonicsRhymesRoute,
+  EnglishPhonicsShortVowelsRoute: EnglishPhonicsShortVowelsRoute,
+}
+
+const EnglishPhonicsRouteWithChildren = EnglishPhonicsRoute._addFileChildren(
+  EnglishPhonicsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -601,7 +740,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfilesRoute: ProfilesRoute,
   EnglishAlphabetRoute: EnglishAlphabetRoute,
   EnglishDigraphsRoute: EnglishDigraphsRoute,
-  EnglishPhonicsRoute: EnglishPhonicsRoute,
+  EnglishPhonicsRoute: EnglishPhonicsRouteWithChildren,
   EnglishSentencesRoute: EnglishSentencesRoute,
   EnglishSightWordsRoute: EnglishSightWordsRoute,
   EnglishSpellingRoute: EnglishSpellingRoute,
