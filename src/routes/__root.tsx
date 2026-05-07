@@ -125,12 +125,43 @@ function ApplySettings() {
   return null;
 }
 
+function PWARegister() {
+  if (typeof window === "undefined") return null;
+  // Run once on mount
+  if (!(window as unknown as { __pwaRegistered?: boolean }).__pwaRegistered) {
+    (window as unknown as { __pwaRegistered?: boolean }).__pwaRegistered = true;
+    queueMicrotask(() => {
+      const inIframe = (() => {
+        try {
+          return window.self !== window.top;
+        } catch {
+          return true;
+        }
+      })();
+      const host = window.location.hostname;
+      const isPreview =
+        host.includes("id-preview--") ||
+        host.includes("lovableproject.com") ||
+        host.includes("lovable.dev");
+      if (inIframe || isPreview) {
+        navigator.serviceWorker?.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
+        return;
+      }
+      if ("serviceWorker" in navigator && import.meta.env.PROD) {
+        navigator.serviceWorker.register("/sw.js").catch((e) => console.warn("SW register failed", e));
+      }
+    });
+  }
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
       <ApplySettings />
+      <PWARegister />
       <div className="flex min-h-screen flex-col">
         <Outlet />
       </div>
