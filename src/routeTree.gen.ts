@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ParentRouteImport } from './routes/parent'
 import { Route as MathRouteImport } from './routes/math'
 import { Route as EvsRouteImport } from './routes/evs'
 import { Route as EnglishRouteImport } from './routes/english'
@@ -30,6 +31,11 @@ import { Route as EnglishSentencesRouteImport } from './routes/english.sentences
 import { Route as EnglishPhonicsRouteImport } from './routes/english.phonics'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 
+const ParentRoute = ParentRouteImport.update({
+  id: '/parent',
+  path: '/parent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MathRoute = MathRouteImport.update({
   id: '/math',
   path: '/math',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/english': typeof EnglishRouteWithChildren
   '/evs': typeof EvsRouteWithChildren
   '/math': typeof MathRouteWithChildren
+  '/parent': typeof ParentRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
@@ -158,6 +165,7 @@ export interface FileRoutesByTo {
   '/english': typeof EnglishRouteWithChildren
   '/evs': typeof EvsRouteWithChildren
   '/math': typeof MathRouteWithChildren
+  '/parent': typeof ParentRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
@@ -181,6 +189,7 @@ export interface FileRoutesById {
   '/english': typeof EnglishRouteWithChildren
   '/evs': typeof EvsRouteWithChildren
   '/math': typeof MathRouteWithChildren
+  '/parent': typeof ParentRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/parent'
     | '/english/alphabet'
     | '/english/phonics'
     | '/english/sentences'
@@ -227,6 +237,7 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/parent'
     | '/english/alphabet'
     | '/english/phonics'
     | '/english/sentences'
@@ -249,6 +260,7 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/parent'
     | '/english/alphabet'
     | '/english/phonics'
     | '/english/sentences'
@@ -272,10 +284,18 @@ export interface RootRouteChildren {
   EnglishRoute: typeof EnglishRouteWithChildren
   EvsRoute: typeof EvsRouteWithChildren
   MathRoute: typeof MathRouteWithChildren
+  ParentRoute: typeof ParentRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/parent': {
+      id: '/parent'
+      path: '/parent'
+      fullPath: '/parent'
+      preLoaderRoute: typeof ParentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/math': {
       id: '/math'
       path: '/math'
@@ -481,6 +501,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnglishRoute: EnglishRouteWithChildren,
   EvsRoute: EvsRouteWithChildren,
   MathRoute: MathRouteWithChildren,
+  ParentRoute: ParentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
