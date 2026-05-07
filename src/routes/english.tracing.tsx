@@ -38,16 +38,15 @@ function TracingPage() {
   const move = (e: React.PointerEvent) => {
     if (!drawing) return;
     cur.current += ` L${point(e)}`;
-    setStrokes((s) => [...s.slice(0, -1), cur.current]);
-    if (s_dirty()) {} // noop to satisfy linter
+    // force re-render of in-progress stroke
+    setStrokes((s) => [...s]);
   };
   const end = () => {
     if (!drawing) return;
     setDrawing(false);
-    setStrokes((s) => [...s, cur.current]);
+    if (cur.current) setStrokes((s) => [...s, cur.current]);
     cur.current = "";
   };
-  const s_dirty = () => false;
 
   const clear = () => setStrokes([]);
   const finish = () => {
