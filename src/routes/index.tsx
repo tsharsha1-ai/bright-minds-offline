@@ -25,7 +25,7 @@ function Home() {
   ];
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-background px-4 py-6 md:px-10">
+    <div className="relative flex min-h-screen flex-col bg-background px-3 py-4 sm:px-4 sm:py-6 md:px-10">
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-3">
           <div
