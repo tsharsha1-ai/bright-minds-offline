@@ -8,7 +8,7 @@ export function TopBar({ title, hideBack = false }: { title?: string; hideBack?:
   const { settings, update } = useSettings();
 
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between gap-3 bg-background/85 px-4 py-3 backdrop-blur md:px-6">
+    <header className="sticky top-0 z-30 flex items-center justify-between gap-2 bg-background/85 px-3 py-2 backdrop-blur sm:px-4 sm:py-3 md:px-6">
       <Link
         to="/"
         onClick={() => stopSpeaking()}
