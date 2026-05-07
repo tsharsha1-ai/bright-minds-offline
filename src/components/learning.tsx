@@ -59,11 +59,11 @@ export function SubjectTile({
 }) {
   const inner = (
     <div
-      className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-[2rem] p-6 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.15)] ring-1 ring-black/5 transition-transform duration-150 active:scale-[0.96]"
+      className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-[2rem] p-3 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.15)] ring-1 ring-black/5 transition-transform duration-150 active:scale-[0.96] sm:gap-4 sm:p-6"
       style={{ backgroundColor: bg, color: fg, opacity: disabled ? 0.4 : 1 }}
     >
-      <div className="text-[6rem] leading-none drop-shadow-sm">{emoji}</div>
-      <div className="text-2xl font-semibold md:text-3xl">{title}</div>
+      <div className="text-5xl leading-none drop-shadow-sm sm:text-7xl md:text-[6rem]">{emoji}</div>
+      <div className="text-base font-semibold sm:text-2xl md:text-3xl">{title}</div>
     </div>
   );
 
