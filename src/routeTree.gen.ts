@@ -22,6 +22,7 @@ import { Route as EvsRoutinesRouteImport } from './routes/evs.routines'
 import { Route as EvsFoodRouteImport } from './routes/evs.food'
 import { Route as EvsFamilyRouteImport } from './routes/evs.family'
 import { Route as EvsEmotionsRouteImport } from './routes/evs.emotions'
+import { Route as EvsBodyRouteImport } from './routes/evs.body'
 import { Route as EvsAnimalsRouteImport } from './routes/evs.animals'
 import { Route as EnglishTracingRouteImport } from './routes/english.tracing'
 import { Route as EnglishSightWordsRouteImport } from './routes/english.sight-words'
@@ -94,6 +95,11 @@ const EvsEmotionsRoute = EvsEmotionsRouteImport.update({
   path: '/emotions',
   getParentRoute: () => EvsRoute,
 } as any)
+const EvsBodyRoute = EvsBodyRouteImport.update({
+  id: '/body',
+  path: '/body',
+  getParentRoute: () => EvsRoute,
+} as any)
 const EvsAnimalsRoute = EvsAnimalsRouteImport.update({
   id: '/animals',
   path: '/animals',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/english/sight-words': typeof EnglishSightWordsRoute
   '/english/tracing': typeof EnglishTracingRoute
   '/evs/animals': typeof EvsAnimalsRoute
+  '/evs/body': typeof EvsBodyRoute
   '/evs/emotions': typeof EvsEmotionsRoute
   '/evs/family': typeof EvsFamilyRoute
   '/evs/food': typeof EvsFoodRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/english/sight-words': typeof EnglishSightWordsRoute
   '/english/tracing': typeof EnglishTracingRoute
   '/evs/animals': typeof EvsAnimalsRoute
+  '/evs/body': typeof EvsBodyRoute
   '/evs/emotions': typeof EvsEmotionsRoute
   '/evs/family': typeof EvsFamilyRoute
   '/evs/food': typeof EvsFoodRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   '/english/sight-words': typeof EnglishSightWordsRoute
   '/english/tracing': typeof EnglishTracingRoute
   '/evs/animals': typeof EvsAnimalsRoute
+  '/evs/body': typeof EvsBodyRoute
   '/evs/emotions': typeof EvsEmotionsRoute
   '/evs/family': typeof EvsFamilyRoute
   '/evs/food': typeof EvsFoodRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/english/sight-words'
     | '/english/tracing'
     | '/evs/animals'
+    | '/evs/body'
     | '/evs/emotions'
     | '/evs/family'
     | '/evs/food'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/english/sight-words'
     | '/english/tracing'
     | '/evs/animals'
+    | '/evs/body'
     | '/evs/emotions'
     | '/evs/family'
     | '/evs/food'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/english/sight-words'
     | '/english/tracing'
     | '/evs/animals'
+    | '/evs/body'
     | '/evs/emotions'
     | '/evs/family'
     | '/evs/food'
@@ -355,6 +367,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EvsEmotionsRouteImport
       parentRoute: typeof EvsRoute
     }
+    '/evs/body': {
+      id: '/evs/body'
+      path: '/body'
+      fullPath: '/evs/body'
+      preLoaderRoute: typeof EvsBodyRouteImport
+      parentRoute: typeof EvsRoute
+    }
     '/evs/animals': {
       id: '/evs/animals'
       path: '/animals'
@@ -421,6 +440,7 @@ const EnglishRouteWithChildren =
 
 interface EvsRouteChildren {
   EvsAnimalsRoute: typeof EvsAnimalsRoute
+  EvsBodyRoute: typeof EvsBodyRoute
   EvsEmotionsRoute: typeof EvsEmotionsRoute
   EvsFamilyRoute: typeof EvsFamilyRoute
   EvsFoodRoute: typeof EvsFoodRoute
@@ -429,6 +449,7 @@ interface EvsRouteChildren {
 
 const EvsRouteChildren: EvsRouteChildren = {
   EvsAnimalsRoute: EvsAnimalsRoute,
+  EvsBodyRoute: EvsBodyRoute,
   EvsEmotionsRoute: EvsEmotionsRoute,
   EvsFamilyRoute: EvsFamilyRoute,
   EvsFoodRoute: EvsFoodRoute,
