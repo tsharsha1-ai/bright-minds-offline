@@ -170,10 +170,9 @@ function DailyAssessment() {
                     disabled={picked !== null}
                     className="rounded-2xl px-4 py-5 text-2xl font-semibold ring-2 transition active:scale-[0.98]"
                     style={{
-                      backgroundColor: reveal && ok ? "var(--evs)" : reveal && isPicked && !ok ? "var(--card)" : "var(--card)",
-                      borderColor: "transparent",
-                      ringColor: reveal && ok ? "var(--evs)" : "var(--border)",
-                      opacity: reveal && !ok && !isPicked ? 0.6 : 1,
+                      backgroundColor: reveal && ok ? "var(--evs)" : "var(--card)",
+                      "--tw-ring-color": reveal && ok ? "var(--evs)" : reveal && isPicked && !ok ? "var(--destructive, #ef4444)" : "var(--border)",
+                      opacity: reveal && !ok && !isPicked ? 0.55 : 1,
                     } as React.CSSProperties}
                   >
                     {opt.label}
