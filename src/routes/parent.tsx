@@ -53,7 +53,8 @@ function Gate({ onPass }: { onPass: () => void }) {
 
 function Dashboard() {
   const { settings, update, reset: resetSettings } = useSettings();
-  const { progress, reset: resetProgress } = useProgress();
+  const { reset: resetProgress } = useProgress();
+  const { profiles, active, setActive, removeProfile } = useProfiles();
 
   const sections: { title: string; lessons: { id: string; label: string }[] }[] = [
     {
