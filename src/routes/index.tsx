@@ -15,6 +15,15 @@ export const Route = createFileRoute("/")({
 function Home() {
   const { settings, update } = useSettings();
   const { active, profiles } = useProfiles();
+  const { mode } = useMode();
+  const navigate = useNavigate();
+
+  // When mode flips to online, jump straight into the online hub
+  useEffect(() => {
+    if (active && mode === "online") {
+      navigate({ to: "/online" });
+    }
+  }, [active, mode, navigate]);
 
   // No profile chosen yet → show kid picker
   if (!active) {
