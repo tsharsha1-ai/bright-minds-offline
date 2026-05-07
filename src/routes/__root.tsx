@@ -73,12 +73,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "A calm, ad-free, offline learning app for Grade 1 children — Math, English, and the World, designed for visual learners and the autism spectrum.",
+          "A calm, ad-free, offline learning app for Grade 1 children — Math, English, and the World.",
       },
       { property: "og:title", content: "Little Learners" },
       {
         property: "og:description",
-        content: "Calm, offline, autism-friendly Grade 1 learning.",
+        content: "Calm, offline, child-friendly Grade 1 learning.",
       },
     ],
     links: [

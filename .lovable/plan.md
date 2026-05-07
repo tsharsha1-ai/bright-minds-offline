@@ -1,7 +1,7 @@
 
 # Little Learners — Calm Offline Learning PWA
 
-A tablet-first, ad-free, offline-installable web app for Grade 1 children (5–7), designed with extra care for visual learners and children on the autism spectrum. Installed once on the Lenovo Tab M11 via Chrome ("Add to Home Screen"); after that it runs fullscreen and works with Wi‑Fi off.
+A tablet-first, ad-free, offline-installable web app for Grade 1 children (5–7), designed with extra care for visual learners . Installed once on the Lenovo Tab M11 via Chrome ("Add to Home Screen"); after that it runs fullscreen and works with Wi‑Fi off.
 
 > Important: Lovable builds web apps. We will ship this as an installable PWA (offline via service worker, fullscreen, no ads, no accounts). A real Android APK can later be produced outside Lovable by wrapping this PWA with Capacitor or a Trusted Web Activity — the codebase here is structured to support that.
 
