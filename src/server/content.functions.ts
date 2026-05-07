@@ -1,6 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
+async function getAdmin() {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  return supabaseAdmin;
+}
 
 // Universal item schema — every online module returns items in this shape.
 // Renderer picks UI based on `kind`.
@@ -76,6 +79,7 @@ export const fetchContent = createServerFn({ method: "POST" })
     if (!cfg) throw new Error(`Unknown module: ${data.module}`);
 
     // 1. Try cache — pick a random recent variant for variety
+    const supabaseAdmin = await getAdmin();
     if (!data.fresh) {
       const { data: rows } = await supabaseAdmin
         .from("content_cache")
