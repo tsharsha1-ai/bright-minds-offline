@@ -37,6 +37,7 @@ import { Route as EnglishSightWordsRouteImport } from './routes/english.sight-wo
 import { Route as EnglishSentencesRouteImport } from './routes/english.sentences'
 import { Route as EnglishDigraphsRouteImport } from './routes/english.digraphs'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
+import { Route as EnglishSpeechIndexRouteImport } from './routes/english.speech.index'
 import { Route as EnglishPhonicsIndexRouteImport } from './routes/english.phonics.index'
 import { Route as EnglishPhonicsTrickyWordsRouteImport } from './routes/english.phonics.tricky-words'
 import { Route as EnglishPhonicsRhymesRouteImport } from './routes/english.phonics.rhymes'
@@ -190,6 +191,11 @@ const EnglishAlphabetRoute = EnglishAlphabetRouteImport.update({
   path: '/english/alphabet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnglishSpeechIndexRoute = EnglishSpeechIndexRouteImport.update({
+  id: '/english/speech/',
+  path: '/english/speech/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnglishPhonicsIndexRoute = EnglishPhonicsIndexRouteImport.update({
   id: '/english/phonics/',
   path: '/english/phonics/',
@@ -293,6 +299,7 @@ export interface FileRoutesByFullPath {
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
   '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
+  '/english/speech/': typeof EnglishSpeechIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -335,6 +342,7 @@ export interface FileRoutesByTo {
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
   '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
   '/english/phonics': typeof EnglishPhonicsIndexRoute
+  '/english/speech': typeof EnglishSpeechIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -378,6 +386,7 @@ export interface FileRoutesById {
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
   '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
+  '/english/speech/': typeof EnglishSpeechIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -422,6 +431,7 @@ export interface FileRouteTypes {
     | '/english/phonics/rhymes'
     | '/english/phonics/tricky-words'
     | '/english/phonics/'
+    | '/english/speech/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -464,6 +474,7 @@ export interface FileRouteTypes {
     | '/english/phonics/rhymes'
     | '/english/phonics/tricky-words'
     | '/english/phonics'
+    | '/english/speech'
   id:
     | '__root__'
     | '/'
@@ -506,6 +517,7 @@ export interface FileRouteTypes {
     | '/english/phonics/rhymes'
     | '/english/phonics/tricky-words'
     | '/english/phonics/'
+    | '/english/speech/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -549,6 +561,7 @@ export interface RootRouteChildren {
   EnglishPhonicsRhymesRoute: typeof EnglishPhonicsRhymesRoute
   EnglishPhonicsTrickyWordsRoute: typeof EnglishPhonicsTrickyWordsRoute
   EnglishPhonicsIndexRoute: typeof EnglishPhonicsIndexRoute
+  EnglishSpeechIndexRoute: typeof EnglishSpeechIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -749,6 +762,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishAlphabetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/english/speech/': {
+      id: '/english/speech/'
+      path: '/english/speech'
+      fullPath: '/english/speech/'
+      preLoaderRoute: typeof EnglishSpeechIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/english/phonics/': {
       id: '/english/phonics/'
       path: '/english/phonics'
@@ -877,6 +897,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnglishPhonicsRhymesRoute: EnglishPhonicsRhymesRoute,
   EnglishPhonicsTrickyWordsRoute: EnglishPhonicsTrickyWordsRoute,
   EnglishPhonicsIndexRoute: EnglishPhonicsIndexRoute,
+  EnglishSpeechIndexRoute: EnglishSpeechIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
