@@ -86,9 +86,11 @@ function Home() {
         </div>
       </div>
 
+      <ModeTabs />
+
       <Link
         to="/assessment"
-        className="mx-auto mt-8 flex w-full max-w-5xl items-center justify-between gap-4 rounded-3xl p-5 shadow-sm ring-1 ring-border transition active:scale-[0.99]"
+        className="mx-auto mt-6 flex w-full max-w-5xl items-center justify-between gap-4 rounded-3xl p-5 shadow-sm ring-1 ring-border transition active:scale-[0.99]"
         style={{ background: "linear-gradient(135deg, var(--star) 0%, var(--english) 100%)" }}
       >
         <div className="flex items-center gap-4">
