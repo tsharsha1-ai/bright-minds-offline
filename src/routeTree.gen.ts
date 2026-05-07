@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MathRouteImport } from './routes/math'
+import { Route as EvsRouteImport } from './routes/evs'
+import { Route as EnglishRouteImport } from './routes/english'
 import { Route as IndexRouteImport } from './routes/index'
 
+const MathRoute = MathRouteImport.update({
+  id: '/math',
+  path: '/math',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvsRoute = EvsRouteImport.update({
+  id: '/evs',
+  path: '/evs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishRoute = EnglishRouteImport.update({
+  id: '/english',
+  path: '/english',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/english': typeof EnglishRoute
+  '/evs': typeof EvsRoute
+  '/math': typeof MathRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/english': typeof EnglishRoute
+  '/evs': typeof EvsRoute
+  '/math': typeof MathRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/english': typeof EnglishRoute
+  '/evs': typeof EvsRoute
+  '/math': typeof MathRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/english' | '/evs' | '/math'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/english' | '/evs' | '/math'
+  id: '__root__' | '/' | '/english' | '/evs' | '/math'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EnglishRoute: typeof EnglishRoute
+  EvsRoute: typeof EvsRoute
+  MathRoute: typeof MathRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/math': {
+      id: '/math'
+      path: '/math'
+      fullPath: '/math'
+      preLoaderRoute: typeof MathRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evs': {
+      id: '/evs'
+      path: '/evs'
+      fullPath: '/evs'
+      preLoaderRoute: typeof EvsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english': {
+      id: '/english'
+      path: '/english'
+      fullPath: '/english'
+      preLoaderRoute: typeof EnglishRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +104,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EnglishRoute: EnglishRoute,
+  EvsRoute: EvsRoute,
+  MathRoute: MathRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
