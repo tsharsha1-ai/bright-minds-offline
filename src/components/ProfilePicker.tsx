@@ -89,8 +89,8 @@ function NewProfileDialog({
   const [color, setColor] = useState(PROFILE_COLORS[0]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-lg rounded-3xl bg-card p-6 shadow-xl ring-1 ring-border">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-4 sm:items-center">
+      <div className="my-auto w-full max-w-lg rounded-3xl bg-card p-5 shadow-xl ring-1 ring-border sm:p-6">
         <h2 className="text-xl font-semibold text-foreground">New kid</h2>
 
         <div className="mt-4">
