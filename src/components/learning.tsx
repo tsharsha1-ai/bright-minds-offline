@@ -1,6 +1,47 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
+export type Level = "beginner" | "intermediate" | "advanced";
+
+const LEVEL_META: Record<Level, { label: string; emoji: string; color: string }> = {
+  beginner: { label: "Beginner", emoji: "🌱", color: "var(--evs)" },
+  intermediate: { label: "Intermediate", emoji: "🌿", color: "var(--math)" },
+  advanced: { label: "Advanced", emoji: "🌟", color: "var(--english)" },
+};
+
+export function LevelTabs({
+  value,
+  onChange,
+}: {
+  value: Level;
+  onChange: (l: Level) => void;
+}) {
+  const levels: Level[] = ["beginner", "intermediate", "advanced"];
+  return (
+    <div className="mx-auto mt-2 flex w-full max-w-2xl gap-2 rounded-3xl bg-card p-1.5 ring-1 ring-border">
+      {levels.map((l) => {
+        const m = LEVEL_META[l];
+        const active = value === l;
+        return (
+          <button
+            key={l}
+            onClick={() => onChange(l)}
+            className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-3 py-2.5 text-sm font-semibold transition md:text-base"
+            style={{
+              backgroundColor: active ? m.color : "transparent",
+              color: active ? "var(--foreground)" : "var(--muted-foreground)",
+            }}
+            aria-pressed={active}
+          >
+            <span aria-hidden>{m.emoji}</span>
+            <span>{m.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function SubjectTile({
   to,
   title,
