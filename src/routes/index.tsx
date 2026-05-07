@@ -25,11 +25,11 @@ function Home() {
   ];
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-background px-4 py-6 md:px-10">
+    <div className="relative flex min-h-screen flex-col bg-background px-3 py-4 sm:px-4 sm:py-6 md:px-10">
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-3">
           <div
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-2xl shadow-sm ring-1 ring-border"
+            className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl text-xl sm:text-2xl shadow-sm ring-1 ring-border"
             style={{ backgroundColor: active.color }}
             aria-hidden
           >
@@ -48,7 +48,7 @@ function Home() {
             <Link
               to="/profiles"
               aria-label="Switch kid"
-              className="flex h-12 w-12 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border"
             >
               <Users className="h-5 w-5 text-foreground" />
             </Link>
@@ -56,7 +56,7 @@ function Home() {
           <button
             onClick={() => update({ soundOn: !settings.soundOn })}
             aria-label={settings.soundOn ? "Sound on" : "Sound off"}
-            className="flex h-12 w-12 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border"
+            className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border"
           >
             {settings.soundOn ? (
               <Volume2 className="h-5 w-5 text-foreground" />
@@ -67,7 +67,7 @@ function Home() {
           <Link
             to="/parent"
             aria-label="Parent mode"
-            className="flex h-12 w-12 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border"
+            className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border"
           >
             <SettingsIcon className="h-5 w-5 text-muted-foreground" />
           </Link>
@@ -89,7 +89,7 @@ function Home() {
         <div className="rounded-2xl bg-background/80 px-4 py-2 text-sm font-semibold text-foreground">Start →</div>
       </Link>
 
-      <div className="mx-auto mt-6 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+      <div className="mx-auto mt-6 grid w-full max-w-5xl flex-1 grid-cols-3 gap-3 sm:gap-6 md:gap-8">
         {subjects.map((s, i) => (
           <div
             key={s.key}
