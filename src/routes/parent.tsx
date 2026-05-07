@@ -3,7 +3,8 @@ import { useState } from "react";
 import { TopBar } from "@/components/TopBar";
 import { PageShell } from "@/components/learning";
 import { useSettings } from "@/hooks/use-settings";
-import { useProgress } from "@/hooks/use-progress";
+import { useProgress, getProgressFor } from "@/hooks/use-progress";
+import { useProfiles } from "@/hooks/use-profiles";
 
 export const Route = createFileRoute("/parent")({
   component: ParentPage,
