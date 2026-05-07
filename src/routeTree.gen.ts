@@ -9,38 +9,293 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ParentRouteImport } from './routes/parent'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MathIndexRouteImport } from './routes/math.index'
+import { Route as EvsIndexRouteImport } from './routes/evs.index'
+import { Route as EnglishIndexRouteImport } from './routes/english.index'
+import { Route as MathShapesRouteImport } from './routes/math.shapes'
+import { Route as MathNumbersRouteImport } from './routes/math.numbers'
+import { Route as MathCountingRouteImport } from './routes/math.counting'
+import { Route as MathCompareRouteImport } from './routes/math.compare'
+import { Route as MathAddsubRouteImport } from './routes/math.addsub'
+import { Route as EvsRoutinesRouteImport } from './routes/evs.routines'
+import { Route as EvsFoodRouteImport } from './routes/evs.food'
+import { Route as EvsFamilyRouteImport } from './routes/evs.family'
+import { Route as EvsEmotionsRouteImport } from './routes/evs.emotions'
+import { Route as EvsBodyRouteImport } from './routes/evs.body'
+import { Route as EvsAnimalsRouteImport } from './routes/evs.animals'
+import { Route as EnglishTracingRouteImport } from './routes/english.tracing'
+import { Route as EnglishSightWordsRouteImport } from './routes/english.sight-words'
+import { Route as EnglishSentencesRouteImport } from './routes/english.sentences'
+import { Route as EnglishPhonicsRouteImport } from './routes/english.phonics'
+import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 
+const ParentRoute = ParentRouteImport.update({
+  id: '/parent',
+  path: '/parent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MathIndexRoute = MathIndexRouteImport.update({
+  id: '/math/',
+  path: '/math/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvsIndexRoute = EvsIndexRouteImport.update({
+  id: '/evs/',
+  path: '/evs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishIndexRoute = EnglishIndexRouteImport.update({
+  id: '/english/',
+  path: '/english/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MathShapesRoute = MathShapesRouteImport.update({
+  id: '/shapes',
+  path: '/shapes',
+  getParentRoute: () => MathRoute,
+} as any)
+const MathNumbersRoute = MathNumbersRouteImport.update({
+  id: '/numbers',
+  path: '/numbers',
+  getParentRoute: () => MathRoute,
+} as any)
+const MathCountingRoute = MathCountingRouteImport.update({
+  id: '/counting',
+  path: '/counting',
+  getParentRoute: () => MathRoute,
+} as any)
+const MathCompareRoute = MathCompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => MathRoute,
+} as any)
+const MathAddsubRoute = MathAddsubRouteImport.update({
+  id: '/addsub',
+  path: '/addsub',
+  getParentRoute: () => MathRoute,
+} as any)
+const EvsRoutinesRoute = EvsRoutinesRouteImport.update({
+  id: '/routines',
+  path: '/routines',
+  getParentRoute: () => EvsRoute,
+} as any)
+const EvsFoodRoute = EvsFoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => EvsRoute,
+} as any)
+const EvsFamilyRoute = EvsFamilyRouteImport.update({
+  id: '/family',
+  path: '/family',
+  getParentRoute: () => EvsRoute,
+} as any)
+const EvsEmotionsRoute = EvsEmotionsRouteImport.update({
+  id: '/emotions',
+  path: '/emotions',
+  getParentRoute: () => EvsRoute,
+} as any)
+const EvsBodyRoute = EvsBodyRouteImport.update({
+  id: '/body',
+  path: '/body',
+  getParentRoute: () => EvsRoute,
+} as any)
+const EvsAnimalsRoute = EvsAnimalsRouteImport.update({
+  id: '/animals',
+  path: '/animals',
+  getParentRoute: () => EvsRoute,
+} as any)
+const EnglishTracingRoute = EnglishTracingRouteImport.update({
+  id: '/tracing',
+  path: '/tracing',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishSightWordsRoute = EnglishSightWordsRouteImport.update({
+  id: '/sight-words',
+  path: '/sight-words',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishSentencesRoute = EnglishSentencesRouteImport.update({
+  id: '/sentences',
+  path: '/sentences',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishPhonicsRoute = EnglishPhonicsRouteImport.update({
+  id: '/phonics',
+  path: '/phonics',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishAlphabetRoute = EnglishAlphabetRouteImport.update({
+  id: '/alphabet',
+  path: '/alphabet',
+  getParentRoute: () => EnglishRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/parent': typeof ParentRoute
+  '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/sentences': typeof EnglishSentencesRoute
+  '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/tracing': typeof EnglishTracingRoute
+  '/evs/animals': typeof EvsAnimalsRoute
+  '/evs/body': typeof EvsBodyRoute
+  '/evs/emotions': typeof EvsEmotionsRoute
+  '/evs/family': typeof EvsFamilyRoute
+  '/evs/food': typeof EvsFoodRoute
+  '/evs/routines': typeof EvsRoutinesRoute
+  '/math/addsub': typeof MathAddsubRoute
+  '/math/compare': typeof MathCompareRoute
+  '/math/counting': typeof MathCountingRoute
+  '/math/numbers': typeof MathNumbersRoute
+  '/math/shapes': typeof MathShapesRoute
+  '/english/': typeof EnglishIndexRoute
+  '/evs/': typeof EvsIndexRoute
+  '/math/': typeof MathIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/parent': typeof ParentRoute
+  '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/sentences': typeof EnglishSentencesRoute
+  '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/tracing': typeof EnglishTracingRoute
+  '/evs/animals': typeof EvsAnimalsRoute
+  '/evs/body': typeof EvsBodyRoute
+  '/evs/emotions': typeof EvsEmotionsRoute
+  '/evs/family': typeof EvsFamilyRoute
+  '/evs/food': typeof EvsFoodRoute
+  '/evs/routines': typeof EvsRoutinesRoute
+  '/math/addsub': typeof MathAddsubRoute
+  '/math/compare': typeof MathCompareRoute
+  '/math/counting': typeof MathCountingRoute
+  '/math/numbers': typeof MathNumbersRoute
+  '/math/shapes': typeof MathShapesRoute
+  '/english': typeof EnglishIndexRoute
+  '/evs': typeof EvsIndexRoute
+  '/math': typeof MathIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/parent': typeof ParentRoute
+  '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/sentences': typeof EnglishSentencesRoute
+  '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/tracing': typeof EnglishTracingRoute
+  '/evs/animals': typeof EvsAnimalsRoute
+  '/evs/body': typeof EvsBodyRoute
+  '/evs/emotions': typeof EvsEmotionsRoute
+  '/evs/family': typeof EvsFamilyRoute
+  '/evs/food': typeof EvsFoodRoute
+  '/evs/routines': typeof EvsRoutinesRoute
+  '/math/addsub': typeof MathAddsubRoute
+  '/math/compare': typeof MathCompareRoute
+  '/math/counting': typeof MathCountingRoute
+  '/math/numbers': typeof MathNumbersRoute
+  '/math/shapes': typeof MathShapesRoute
+  '/english/': typeof EnglishIndexRoute
+  '/evs/': typeof EvsIndexRoute
+  '/math/': typeof MathIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/parent'
+    | '/english/alphabet'
+    | '/english/phonics'
+    | '/english/sentences'
+    | '/english/sight-words'
+    | '/english/tracing'
+    | '/evs/animals'
+    | '/evs/body'
+    | '/evs/emotions'
+    | '/evs/family'
+    | '/evs/food'
+    | '/evs/routines'
+    | '/math/addsub'
+    | '/math/compare'
+    | '/math/counting'
+    | '/math/numbers'
+    | '/math/shapes'
+    | '/english/'
+    | '/evs/'
+    | '/math/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/parent'
+    | '/english/alphabet'
+    | '/english/phonics'
+    | '/english/sentences'
+    | '/english/sight-words'
+    | '/english/tracing'
+    | '/evs/animals'
+    | '/evs/body'
+    | '/evs/emotions'
+    | '/evs/family'
+    | '/evs/food'
+    | '/evs/routines'
+    | '/math/addsub'
+    | '/math/compare'
+    | '/math/counting'
+    | '/math/numbers'
+    | '/math/shapes'
+    | '/english'
+    | '/evs'
+    | '/math'
+  id:
+    | '__root__'
+    | '/'
+    | '/parent'
+    | '/english/alphabet'
+    | '/english/phonics'
+    | '/english/sentences'
+    | '/english/sight-words'
+    | '/english/tracing'
+    | '/evs/animals'
+    | '/evs/body'
+    | '/evs/emotions'
+    | '/evs/family'
+    | '/evs/food'
+    | '/evs/routines'
+    | '/math/addsub'
+    | '/math/compare'
+    | '/math/counting'
+    | '/math/numbers'
+    | '/math/shapes'
+    | '/english/'
+    | '/evs/'
+    | '/math/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ParentRoute: typeof ParentRoute
+  EnglishIndexRoute: typeof EnglishIndexRoute
+  EvsIndexRoute: typeof EvsIndexRoute
+  MathIndexRoute: typeof MathIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/parent': {
+      id: '/parent'
+      path: '/parent'
+      fullPath: '/parent'
+      preLoaderRoute: typeof ParentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +303,148 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/math/': {
+      id: '/math/'
+      path: '/math'
+      fullPath: '/math/'
+      preLoaderRoute: typeof MathIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evs/': {
+      id: '/evs/'
+      path: '/evs'
+      fullPath: '/evs/'
+      preLoaderRoute: typeof EvsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/': {
+      id: '/english/'
+      path: '/english'
+      fullPath: '/english/'
+      preLoaderRoute: typeof EnglishIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/math/shapes': {
+      id: '/math/shapes'
+      path: '/shapes'
+      fullPath: '/math/shapes'
+      preLoaderRoute: typeof MathShapesRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/math/numbers': {
+      id: '/math/numbers'
+      path: '/numbers'
+      fullPath: '/math/numbers'
+      preLoaderRoute: typeof MathNumbersRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/math/counting': {
+      id: '/math/counting'
+      path: '/counting'
+      fullPath: '/math/counting'
+      preLoaderRoute: typeof MathCountingRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/math/compare': {
+      id: '/math/compare'
+      path: '/compare'
+      fullPath: '/math/compare'
+      preLoaderRoute: typeof MathCompareRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/math/addsub': {
+      id: '/math/addsub'
+      path: '/addsub'
+      fullPath: '/math/addsub'
+      preLoaderRoute: typeof MathAddsubRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/evs/routines': {
+      id: '/evs/routines'
+      path: '/routines'
+      fullPath: '/evs/routines'
+      preLoaderRoute: typeof EvsRoutinesRouteImport
+      parentRoute: typeof EvsRoute
+    }
+    '/evs/food': {
+      id: '/evs/food'
+      path: '/food'
+      fullPath: '/evs/food'
+      preLoaderRoute: typeof EvsFoodRouteImport
+      parentRoute: typeof EvsRoute
+    }
+    '/evs/family': {
+      id: '/evs/family'
+      path: '/family'
+      fullPath: '/evs/family'
+      preLoaderRoute: typeof EvsFamilyRouteImport
+      parentRoute: typeof EvsRoute
+    }
+    '/evs/emotions': {
+      id: '/evs/emotions'
+      path: '/emotions'
+      fullPath: '/evs/emotions'
+      preLoaderRoute: typeof EvsEmotionsRouteImport
+      parentRoute: typeof EvsRoute
+    }
+    '/evs/body': {
+      id: '/evs/body'
+      path: '/body'
+      fullPath: '/evs/body'
+      preLoaderRoute: typeof EvsBodyRouteImport
+      parentRoute: typeof EvsRoute
+    }
+    '/evs/animals': {
+      id: '/evs/animals'
+      path: '/animals'
+      fullPath: '/evs/animals'
+      preLoaderRoute: typeof EvsAnimalsRouteImport
+      parentRoute: typeof EvsRoute
+    }
+    '/english/tracing': {
+      id: '/english/tracing'
+      path: '/tracing'
+      fullPath: '/english/tracing'
+      preLoaderRoute: typeof EnglishTracingRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/sight-words': {
+      id: '/english/sight-words'
+      path: '/sight-words'
+      fullPath: '/english/sight-words'
+      preLoaderRoute: typeof EnglishSightWordsRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/sentences': {
+      id: '/english/sentences'
+      path: '/sentences'
+      fullPath: '/english/sentences'
+      preLoaderRoute: typeof EnglishSentencesRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/phonics': {
+      id: '/english/phonics'
+      path: '/phonics'
+      fullPath: '/english/phonics'
+      preLoaderRoute: typeof EnglishPhonicsRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/alphabet': {
+      id: '/english/alphabet'
+      path: '/alphabet'
+      fullPath: '/english/alphabet'
+      preLoaderRoute: typeof EnglishAlphabetRouteImport
+      parentRoute: typeof EnglishRoute
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ParentRoute: ParentRoute,
+  EnglishIndexRoute: EnglishIndexRoute,
+  EvsIndexRoute: EvsIndexRoute,
+  MathIndexRoute: MathIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
