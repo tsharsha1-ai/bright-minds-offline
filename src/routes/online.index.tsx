@@ -55,11 +55,18 @@ const SUBJECTS = [
 
 function OnlineHub() {
   const { progress } = useProgress();
+  const { mode } = useMode();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (mode === "offline") navigate({ to: "/" });
+  }, [mode, navigate]);
+
   return (
     <>
       <TopBar title="Online Mode ✨" />
       <PageShell>
-        <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted-foreground">
+        <ModeTabs />
+        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
           Fresh AI-powered questions every time. Tap any module to start.
         </p>
 
