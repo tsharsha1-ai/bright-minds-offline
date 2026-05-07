@@ -116,7 +116,7 @@ export function LessonCard({
 
 export function PageShell({ children }: { children: ReactNode }) {
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 pb-10 pt-2 md:px-8">
+    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-3 pb-8 pt-2 sm:px-4 md:px-8 md:pb-10">
       {children}
     </main>
   );
