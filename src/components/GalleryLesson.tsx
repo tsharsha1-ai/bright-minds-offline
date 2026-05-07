@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { TopBar } from "@/components/TopBar";
@@ -77,7 +76,3 @@ export function GalleryLesson({
   );
 }
 
-export const Route = createFileRoute("/evs/_gallery")({
-  // virtual — never matched
-  component: () => null,
-});
