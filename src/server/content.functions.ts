@@ -155,7 +155,8 @@ Make 8 fresh items.`;
       module: data.module,
       level: data.level,
       variant: "ai",
-      payload: payload as unknown as Record<string, unknown>,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      payload: payload as any,
     });
 
     return payload;
