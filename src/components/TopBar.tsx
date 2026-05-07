@@ -12,10 +12,10 @@ export function TopBar({ title, hideBack = false }: { title?: string; hideBack?:
       <Link
         to="/"
         onClick={() => stopSpeaking()}
-        className="flex h-14 w-14 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border transition-transform active:scale-95"
+        className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border transition-transform active:scale-95"
         aria-label="Home"
       >
-        <Home className="h-7 w-7 text-primary" strokeWidth={2.4} />
+        <Home className="h-6 w-6 sm:h-7 sm:w-7 text-primary" strokeWidth={2.4} />
       </Link>
 
       {title ? (
@@ -33,12 +33,12 @@ export function TopBar({ title, hideBack = false }: { title?: string; hideBack?:
             update({ soundOn: !settings.soundOn });
           }}
           aria-label={settings.soundOn ? "Turn sound off" : "Turn sound on"}
-          className="flex h-14 w-14 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border transition-transform active:scale-95"
+          className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border transition-transform active:scale-95"
         >
           {settings.soundOn ? (
-            <Volume2 className="h-6 w-6 text-foreground" strokeWidth={2.2} />
+            <Volume2 className="h-5 w-5 sm:h-6 sm:w-6 text-foreground" strokeWidth={2.2} />
           ) : (
-            <VolumeX className="h-6 w-6 text-muted-foreground" strokeWidth={2.2} />
+            <VolumeX className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground" strokeWidth={2.2} />
           )}
         </button>
 
@@ -49,9 +49,9 @@ export function TopBar({ title, hideBack = false }: { title?: string; hideBack?:
               router.history.back();
             }}
             aria-label="Back"
-            className="flex h-14 w-14 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border transition-transform active:scale-95"
+            className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-card shadow-sm ring-1 ring-border transition-transform active:scale-95"
           >
-            <ChevronLeft className="h-7 w-7 text-foreground" strokeWidth={2.4} />
+            <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7 text-foreground" strokeWidth={2.4} />
           </button>
         )}
       </div>
