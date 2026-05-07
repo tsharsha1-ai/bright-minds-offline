@@ -110,6 +110,7 @@ function NewProfileDialog({
             {PROFILE_EMOJIS.map((e) => (
               <button
                 key={e}
+                type="button"
                 onClick={() => setEmoji(e)}
                 className="flex h-12 w-12 items-center justify-center rounded-2xl text-2xl ring-1 ring-border"
                 style={{ backgroundColor: emoji === e ? color : "var(--background)" }}
@@ -126,6 +127,7 @@ function NewProfileDialog({
             {PROFILE_COLORS.map((c) => (
               <button
                 key={c}
+                type="button"
                 onClick={() => setColor(c)}
                 aria-label={`Color ${c}`}
                 className="h-10 w-10 rounded-full ring-2"
@@ -137,12 +139,14 @@ function NewProfileDialog({
 
         <div className="mt-6 flex justify-end gap-2">
           <button
+            type="button"
             onClick={onCancel}
             className="rounded-2xl bg-background px-5 py-3 text-foreground ring-1 ring-border"
           >
             Cancel
           </button>
           <button
+            type="button"
             disabled={!name.trim()}
             onClick={() => onCreate({ name: name.trim(), emoji, color })}
             className="rounded-2xl bg-primary px-5 py-3 font-semibold text-primary-foreground disabled:opacity-50"
