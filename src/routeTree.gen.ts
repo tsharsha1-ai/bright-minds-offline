@@ -13,6 +13,10 @@ import { Route as MathRouteImport } from './routes/math'
 import { Route as EvsRouteImport } from './routes/evs'
 import { Route as EnglishRouteImport } from './routes/english'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MathShapesRouteImport } from './routes/math.shapes'
+import { Route as MathNumbersRouteImport } from './routes/math.numbers'
+import { Route as MathCountingRouteImport } from './routes/math.counting'
+import { Route as MathAddsubRouteImport } from './routes/math.addsub'
 
 const MathRoute = MathRouteImport.update({
   id: '/math',
@@ -34,39 +38,96 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MathShapesRoute = MathShapesRouteImport.update({
+  id: '/shapes',
+  path: '/shapes',
+  getParentRoute: () => MathRoute,
+} as any)
+const MathNumbersRoute = MathNumbersRouteImport.update({
+  id: '/numbers',
+  path: '/numbers',
+  getParentRoute: () => MathRoute,
+} as any)
+const MathCountingRoute = MathCountingRouteImport.update({
+  id: '/counting',
+  path: '/counting',
+  getParentRoute: () => MathRoute,
+} as any)
+const MathAddsubRoute = MathAddsubRouteImport.update({
+  id: '/addsub',
+  path: '/addsub',
+  getParentRoute: () => MathRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/english': typeof EnglishRoute
   '/evs': typeof EvsRoute
-  '/math': typeof MathRoute
+  '/math': typeof MathRouteWithChildren
+  '/math/addsub': typeof MathAddsubRoute
+  '/math/counting': typeof MathCountingRoute
+  '/math/numbers': typeof MathNumbersRoute
+  '/math/shapes': typeof MathShapesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/english': typeof EnglishRoute
   '/evs': typeof EvsRoute
-  '/math': typeof MathRoute
+  '/math': typeof MathRouteWithChildren
+  '/math/addsub': typeof MathAddsubRoute
+  '/math/counting': typeof MathCountingRoute
+  '/math/numbers': typeof MathNumbersRoute
+  '/math/shapes': typeof MathShapesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/english': typeof EnglishRoute
   '/evs': typeof EvsRoute
-  '/math': typeof MathRoute
+  '/math': typeof MathRouteWithChildren
+  '/math/addsub': typeof MathAddsubRoute
+  '/math/counting': typeof MathCountingRoute
+  '/math/numbers': typeof MathNumbersRoute
+  '/math/shapes': typeof MathShapesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/english' | '/evs' | '/math'
+  fullPaths:
+    | '/'
+    | '/english'
+    | '/evs'
+    | '/math'
+    | '/math/addsub'
+    | '/math/counting'
+    | '/math/numbers'
+    | '/math/shapes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/english' | '/evs' | '/math'
-  id: '__root__' | '/' | '/english' | '/evs' | '/math'
+  to:
+    | '/'
+    | '/english'
+    | '/evs'
+    | '/math'
+    | '/math/addsub'
+    | '/math/counting'
+    | '/math/numbers'
+    | '/math/shapes'
+  id:
+    | '__root__'
+    | '/'
+    | '/english'
+    | '/evs'
+    | '/math'
+    | '/math/addsub'
+    | '/math/counting'
+    | '/math/numbers'
+    | '/math/shapes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EnglishRoute: typeof EnglishRoute
   EvsRoute: typeof EvsRoute
-  MathRoute: typeof MathRoute
+  MathRoute: typeof MathRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -99,14 +160,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/math/shapes': {
+      id: '/math/shapes'
+      path: '/shapes'
+      fullPath: '/math/shapes'
+      preLoaderRoute: typeof MathShapesRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/math/numbers': {
+      id: '/math/numbers'
+      path: '/numbers'
+      fullPath: '/math/numbers'
+      preLoaderRoute: typeof MathNumbersRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/math/counting': {
+      id: '/math/counting'
+      path: '/counting'
+      fullPath: '/math/counting'
+      preLoaderRoute: typeof MathCountingRouteImport
+      parentRoute: typeof MathRoute
+    }
+    '/math/addsub': {
+      id: '/math/addsub'
+      path: '/addsub'
+      fullPath: '/math/addsub'
+      preLoaderRoute: typeof MathAddsubRouteImport
+      parentRoute: typeof MathRoute
+    }
   }
 }
+
+interface MathRouteChildren {
+  MathAddsubRoute: typeof MathAddsubRoute
+  MathCountingRoute: typeof MathCountingRoute
+  MathNumbersRoute: typeof MathNumbersRoute
+  MathShapesRoute: typeof MathShapesRoute
+}
+
+const MathRouteChildren: MathRouteChildren = {
+  MathAddsubRoute: MathAddsubRoute,
+  MathCountingRoute: MathCountingRoute,
+  MathNumbersRoute: MathNumbersRoute,
+  MathShapesRoute: MathShapesRoute,
+}
+
+const MathRouteWithChildren = MathRoute._addFileChildren(MathRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EnglishRoute: EnglishRoute,
   EvsRoute: EvsRoute,
-  MathRoute: MathRoute,
+  MathRoute: MathRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
