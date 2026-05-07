@@ -15,21 +15,27 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as MathIndexRouteImport } from './routes/math.index'
 import { Route as EvsIndexRouteImport } from './routes/evs.index'
 import { Route as EnglishIndexRouteImport } from './routes/english.index'
+import { Route as MathTimesTablesRouteImport } from './routes/math.times-tables'
 import { Route as MathShapesRouteImport } from './routes/math.shapes'
+import { Route as MathPlaceValueRouteImport } from './routes/math.place-value'
 import { Route as MathNumbersRouteImport } from './routes/math.numbers'
 import { Route as MathCountingRouteImport } from './routes/math.counting'
 import { Route as MathCompareRouteImport } from './routes/math.compare'
 import { Route as MathAddsubRouteImport } from './routes/math.addsub'
+import { Route as EvsWeatherRouteImport } from './routes/evs.weather'
 import { Route as EvsRoutinesRouteImport } from './routes/evs.routines'
+import { Route as EvsPlantsRouteImport } from './routes/evs.plants'
 import { Route as EvsFoodRouteImport } from './routes/evs.food'
 import { Route as EvsFamilyRouteImport } from './routes/evs.family'
 import { Route as EvsEmotionsRouteImport } from './routes/evs.emotions'
 import { Route as EvsBodyRouteImport } from './routes/evs.body'
 import { Route as EvsAnimalsRouteImport } from './routes/evs.animals'
 import { Route as EnglishTracingRouteImport } from './routes/english.tracing'
+import { Route as EnglishSpellingRouteImport } from './routes/english.spelling'
 import { Route as EnglishSightWordsRouteImport } from './routes/english.sight-words'
 import { Route as EnglishSentencesRouteImport } from './routes/english.sentences'
 import { Route as EnglishPhonicsRouteImport } from './routes/english.phonics'
+import { Route as EnglishDigraphsRouteImport } from './routes/english.digraphs'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 
 const ProfilesRoute = ProfilesRouteImport.update({
@@ -62,9 +68,19 @@ const EnglishIndexRoute = EnglishIndexRouteImport.update({
   path: '/english/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MathTimesTablesRoute = MathTimesTablesRouteImport.update({
+  id: '/math/times-tables',
+  path: '/math/times-tables',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MathShapesRoute = MathShapesRouteImport.update({
   id: '/math/shapes',
   path: '/math/shapes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MathPlaceValueRoute = MathPlaceValueRouteImport.update({
+  id: '/math/place-value',
+  path: '/math/place-value',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MathNumbersRoute = MathNumbersRouteImport.update({
@@ -87,9 +103,19 @@ const MathAddsubRoute = MathAddsubRouteImport.update({
   path: '/math/addsub',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EvsWeatherRoute = EvsWeatherRouteImport.update({
+  id: '/evs/weather',
+  path: '/evs/weather',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EvsRoutinesRoute = EvsRoutinesRouteImport.update({
   id: '/evs/routines',
   path: '/evs/routines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvsPlantsRoute = EvsPlantsRouteImport.update({
+  id: '/evs/plants',
+  path: '/evs/plants',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EvsFoodRoute = EvsFoodRouteImport.update({
@@ -122,6 +148,11 @@ const EnglishTracingRoute = EnglishTracingRouteImport.update({
   path: '/english/tracing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnglishSpellingRoute = EnglishSpellingRouteImport.update({
+  id: '/english/spelling',
+  path: '/english/spelling',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnglishSightWordsRoute = EnglishSightWordsRouteImport.update({
   id: '/english/sight-words',
   path: '/english/sight-words',
@@ -137,6 +168,11 @@ const EnglishPhonicsRoute = EnglishPhonicsRouteImport.update({
   path: '/english/phonics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnglishDigraphsRoute = EnglishDigraphsRouteImport.update({
+  id: '/english/digraphs',
+  path: '/english/digraphs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnglishAlphabetRoute = EnglishAlphabetRouteImport.update({
   id: '/english/alphabet',
   path: '/english/alphabet',
@@ -148,21 +184,27 @@ export interface FileRoutesByFullPath {
   '/parent': typeof ParentRoute
   '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/digraphs': typeof EnglishDigraphsRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
   '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/spelling': typeof EnglishSpellingRoute
   '/english/tracing': typeof EnglishTracingRoute
   '/evs/animals': typeof EvsAnimalsRoute
   '/evs/body': typeof EvsBodyRoute
   '/evs/emotions': typeof EvsEmotionsRoute
   '/evs/family': typeof EvsFamilyRoute
   '/evs/food': typeof EvsFoodRoute
+  '/evs/plants': typeof EvsPlantsRoute
   '/evs/routines': typeof EvsRoutinesRoute
+  '/evs/weather': typeof EvsWeatherRoute
   '/math/addsub': typeof MathAddsubRoute
   '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
+  '/math/place-value': typeof MathPlaceValueRoute
   '/math/shapes': typeof MathShapesRoute
+  '/math/times-tables': typeof MathTimesTablesRoute
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
@@ -172,21 +214,27 @@ export interface FileRoutesByTo {
   '/parent': typeof ParentRoute
   '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/digraphs': typeof EnglishDigraphsRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
   '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/spelling': typeof EnglishSpellingRoute
   '/english/tracing': typeof EnglishTracingRoute
   '/evs/animals': typeof EvsAnimalsRoute
   '/evs/body': typeof EvsBodyRoute
   '/evs/emotions': typeof EvsEmotionsRoute
   '/evs/family': typeof EvsFamilyRoute
   '/evs/food': typeof EvsFoodRoute
+  '/evs/plants': typeof EvsPlantsRoute
   '/evs/routines': typeof EvsRoutinesRoute
+  '/evs/weather': typeof EvsWeatherRoute
   '/math/addsub': typeof MathAddsubRoute
   '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
+  '/math/place-value': typeof MathPlaceValueRoute
   '/math/shapes': typeof MathShapesRoute
+  '/math/times-tables': typeof MathTimesTablesRoute
   '/english': typeof EnglishIndexRoute
   '/evs': typeof EvsIndexRoute
   '/math': typeof MathIndexRoute
@@ -197,21 +245,27 @@ export interface FileRoutesById {
   '/parent': typeof ParentRoute
   '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/digraphs': typeof EnglishDigraphsRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
   '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/spelling': typeof EnglishSpellingRoute
   '/english/tracing': typeof EnglishTracingRoute
   '/evs/animals': typeof EvsAnimalsRoute
   '/evs/body': typeof EvsBodyRoute
   '/evs/emotions': typeof EvsEmotionsRoute
   '/evs/family': typeof EvsFamilyRoute
   '/evs/food': typeof EvsFoodRoute
+  '/evs/plants': typeof EvsPlantsRoute
   '/evs/routines': typeof EvsRoutinesRoute
+  '/evs/weather': typeof EvsWeatherRoute
   '/math/addsub': typeof MathAddsubRoute
   '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
+  '/math/place-value': typeof MathPlaceValueRoute
   '/math/shapes': typeof MathShapesRoute
+  '/math/times-tables': typeof MathTimesTablesRoute
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
@@ -223,21 +277,27 @@ export interface FileRouteTypes {
     | '/parent'
     | '/profiles'
     | '/english/alphabet'
+    | '/english/digraphs'
     | '/english/phonics'
     | '/english/sentences'
     | '/english/sight-words'
+    | '/english/spelling'
     | '/english/tracing'
     | '/evs/animals'
     | '/evs/body'
     | '/evs/emotions'
     | '/evs/family'
     | '/evs/food'
+    | '/evs/plants'
     | '/evs/routines'
+    | '/evs/weather'
     | '/math/addsub'
     | '/math/compare'
     | '/math/counting'
     | '/math/numbers'
+    | '/math/place-value'
     | '/math/shapes'
+    | '/math/times-tables'
     | '/english/'
     | '/evs/'
     | '/math/'
@@ -247,21 +307,27 @@ export interface FileRouteTypes {
     | '/parent'
     | '/profiles'
     | '/english/alphabet'
+    | '/english/digraphs'
     | '/english/phonics'
     | '/english/sentences'
     | '/english/sight-words'
+    | '/english/spelling'
     | '/english/tracing'
     | '/evs/animals'
     | '/evs/body'
     | '/evs/emotions'
     | '/evs/family'
     | '/evs/food'
+    | '/evs/plants'
     | '/evs/routines'
+    | '/evs/weather'
     | '/math/addsub'
     | '/math/compare'
     | '/math/counting'
     | '/math/numbers'
+    | '/math/place-value'
     | '/math/shapes'
+    | '/math/times-tables'
     | '/english'
     | '/evs'
     | '/math'
@@ -271,21 +337,27 @@ export interface FileRouteTypes {
     | '/parent'
     | '/profiles'
     | '/english/alphabet'
+    | '/english/digraphs'
     | '/english/phonics'
     | '/english/sentences'
     | '/english/sight-words'
+    | '/english/spelling'
     | '/english/tracing'
     | '/evs/animals'
     | '/evs/body'
     | '/evs/emotions'
     | '/evs/family'
     | '/evs/food'
+    | '/evs/plants'
     | '/evs/routines'
+    | '/evs/weather'
     | '/math/addsub'
     | '/math/compare'
     | '/math/counting'
     | '/math/numbers'
+    | '/math/place-value'
     | '/math/shapes'
+    | '/math/times-tables'
     | '/english/'
     | '/evs/'
     | '/math/'
@@ -296,21 +368,27 @@ export interface RootRouteChildren {
   ParentRoute: typeof ParentRoute
   ProfilesRoute: typeof ProfilesRoute
   EnglishAlphabetRoute: typeof EnglishAlphabetRoute
+  EnglishDigraphsRoute: typeof EnglishDigraphsRoute
   EnglishPhonicsRoute: typeof EnglishPhonicsRoute
   EnglishSentencesRoute: typeof EnglishSentencesRoute
   EnglishSightWordsRoute: typeof EnglishSightWordsRoute
+  EnglishSpellingRoute: typeof EnglishSpellingRoute
   EnglishTracingRoute: typeof EnglishTracingRoute
   EvsAnimalsRoute: typeof EvsAnimalsRoute
   EvsBodyRoute: typeof EvsBodyRoute
   EvsEmotionsRoute: typeof EvsEmotionsRoute
   EvsFamilyRoute: typeof EvsFamilyRoute
   EvsFoodRoute: typeof EvsFoodRoute
+  EvsPlantsRoute: typeof EvsPlantsRoute
   EvsRoutinesRoute: typeof EvsRoutinesRoute
+  EvsWeatherRoute: typeof EvsWeatherRoute
   MathAddsubRoute: typeof MathAddsubRoute
   MathCompareRoute: typeof MathCompareRoute
   MathCountingRoute: typeof MathCountingRoute
   MathNumbersRoute: typeof MathNumbersRoute
+  MathPlaceValueRoute: typeof MathPlaceValueRoute
   MathShapesRoute: typeof MathShapesRoute
+  MathTimesTablesRoute: typeof MathTimesTablesRoute
   EnglishIndexRoute: typeof EnglishIndexRoute
   EvsIndexRoute: typeof EvsIndexRoute
   MathIndexRoute: typeof MathIndexRoute
@@ -360,11 +438,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/math/times-tables': {
+      id: '/math/times-tables'
+      path: '/math/times-tables'
+      fullPath: '/math/times-tables'
+      preLoaderRoute: typeof MathTimesTablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/math/shapes': {
       id: '/math/shapes'
       path: '/math/shapes'
       fullPath: '/math/shapes'
       preLoaderRoute: typeof MathShapesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/math/place-value': {
+      id: '/math/place-value'
+      path: '/math/place-value'
+      fullPath: '/math/place-value'
+      preLoaderRoute: typeof MathPlaceValueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/math/numbers': {
@@ -395,11 +487,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MathAddsubRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/evs/weather': {
+      id: '/evs/weather'
+      path: '/evs/weather'
+      fullPath: '/evs/weather'
+      preLoaderRoute: typeof EvsWeatherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/evs/routines': {
       id: '/evs/routines'
       path: '/evs/routines'
       fullPath: '/evs/routines'
       preLoaderRoute: typeof EvsRoutinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evs/plants': {
+      id: '/evs/plants'
+      path: '/evs/plants'
+      fullPath: '/evs/plants'
+      preLoaderRoute: typeof EvsPlantsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/evs/food': {
@@ -444,6 +550,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishTracingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/english/spelling': {
+      id: '/english/spelling'
+      path: '/english/spelling'
+      fullPath: '/english/spelling'
+      preLoaderRoute: typeof EnglishSpellingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/english/sight-words': {
       id: '/english/sight-words'
       path: '/english/sight-words'
@@ -465,6 +578,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishPhonicsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/english/digraphs': {
+      id: '/english/digraphs'
+      path: '/english/digraphs'
+      fullPath: '/english/digraphs'
+      preLoaderRoute: typeof EnglishDigraphsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/english/alphabet': {
       id: '/english/alphabet'
       path: '/english/alphabet'
@@ -480,21 +600,27 @@ const rootRouteChildren: RootRouteChildren = {
   ParentRoute: ParentRoute,
   ProfilesRoute: ProfilesRoute,
   EnglishAlphabetRoute: EnglishAlphabetRoute,
+  EnglishDigraphsRoute: EnglishDigraphsRoute,
   EnglishPhonicsRoute: EnglishPhonicsRoute,
   EnglishSentencesRoute: EnglishSentencesRoute,
   EnglishSightWordsRoute: EnglishSightWordsRoute,
+  EnglishSpellingRoute: EnglishSpellingRoute,
   EnglishTracingRoute: EnglishTracingRoute,
   EvsAnimalsRoute: EvsAnimalsRoute,
   EvsBodyRoute: EvsBodyRoute,
   EvsEmotionsRoute: EvsEmotionsRoute,
   EvsFamilyRoute: EvsFamilyRoute,
   EvsFoodRoute: EvsFoodRoute,
+  EvsPlantsRoute: EvsPlantsRoute,
   EvsRoutinesRoute: EvsRoutinesRoute,
+  EvsWeatherRoute: EvsWeatherRoute,
   MathAddsubRoute: MathAddsubRoute,
   MathCompareRoute: MathCompareRoute,
   MathCountingRoute: MathCountingRoute,
   MathNumbersRoute: MathNumbersRoute,
+  MathPlaceValueRoute: MathPlaceValueRoute,
   MathShapesRoute: MathShapesRoute,
+  MathTimesTablesRoute: MathTimesTablesRoute,
   EnglishIndexRoute: EnglishIndexRoute,
   EvsIndexRoute: EvsIndexRoute,
   MathIndexRoute: MathIndexRoute,
@@ -502,3 +628,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
