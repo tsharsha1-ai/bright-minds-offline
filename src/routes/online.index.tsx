@@ -1,6 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { TopBar } from "@/components/TopBar";
 import { PageShell } from "@/components/learning";
+import { ModeTabs } from "@/components/ModeTabs";
+import { useMode } from "@/hooks/use-mode";
 import { useProgress } from "@/hooks/use-progress";
 
 export const Route = createFileRoute("/online/")({
