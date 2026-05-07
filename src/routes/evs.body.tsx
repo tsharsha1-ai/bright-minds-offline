@@ -56,20 +56,20 @@ function BodyPage() {
 }
 
 const PARTS = [
-  { name: "Head", emoji: "🧠", x: 50, y: 12 },
-  { name: "Eyes", emoji: "👀", x: 50, y: 22 },
-  { name: "Ears", emoji: "👂", x: 70, y: 22 },
-  { name: "Nose", emoji: "👃", x: 50, y: 28 },
-  { name: "Mouth", emoji: "👄", x: 50, y: 34 },
-  { name: "Hands", emoji: "✋", x: 18, y: 60 },
-  { name: "Legs", emoji: "🦵", x: 40, y: 80 },
-  { name: "Feet", emoji: "🦶", x: 40, y: 95 },
+  { name: "Head", emoji: "🧠" },
+  { name: "Eyes", emoji: "👀" },
+  { name: "Ears", emoji: "👂" },
+  { name: "Nose", emoji: "👃" },
+  { name: "Mouth", emoji: "👄" },
+  { name: "Hands", emoji: "✋" },
+  { name: "Legs", emoji: "🦵" },
+  { name: "Feet", emoji: "🦶" },
 ];
 
 function Parts() {
   const { settings } = useSettings();
   const { mark } = useProgress();
-  const [picked, setPicked] = useState<string | null>(null);
+  const [picked, setPicked] = useState<string>(PARTS[0].name);
   const [count, setCount] = useState(0);
 
   const tap = (name: string) => {
@@ -82,41 +82,47 @@ function Parts() {
     });
   };
 
+  const current = PARTS.find((p) => p.name === picked) ?? PARTS[0];
+
   return (
-    <div className="mx-auto grid w-full max-w-3xl gap-6 md:grid-cols-2">
-      <div className="relative mx-auto flex aspect-[3/5] w-full max-w-xs items-center justify-center rounded-3xl bg-[var(--evs)]/30 ring-1 ring-border">
-        {/* Friendly stylized child */}
-        <div className="text-[12rem] leading-none">🧒</div>
-        {PARTS.map((p) => (
-          <motion.button
-            key={p.name}
-            whileTap={{ scale: 0.85 }}
-            onClick={() => tap(p.name)}
-            className="absolute flex h-12 w-12 items-center justify-center rounded-full bg-card text-2xl shadow ring-2 ring-border"
-            style={{ left: `${p.x}%`, top: `${p.y}%`, transform: "translate(-50%, -50%)" }}
-            aria-label={p.name}
-          >
-            {p.emoji}
-          </motion.button>
-        ))}
+    <div className="mx-auto grid w-full max-w-4xl gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+      <div className="flex flex-col items-center gap-4 rounded-3xl bg-[var(--evs)]/30 p-6 ring-1 ring-border">
+        <div className="text-[10rem] leading-none">🧒</div>
+        <motion.div
+          key={picked}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="flex items-center gap-3 rounded-2xl bg-card px-5 py-3 shadow ring-1 ring-border"
+        >
+          <span className="text-4xl">{current.emoji}</span>
+          <span className="text-2xl font-bold text-foreground">{current.name}</span>
+          <SpeakButton text={current.name} />
+        </motion.div>
       </div>
 
-      <div className="flex flex-col items-center gap-4 rounded-3xl bg-card p-6 ring-1 ring-border">
-        <p className="text-center text-lg text-muted-foreground">Tap a part of the body.</p>
-        {picked ? (
-          <motion.div
-            key={picked}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="flex flex-col items-center gap-3"
-          >
-            <div className="text-7xl">{PARTS.find((p) => p.name === picked)?.emoji}</div>
-            <h3 className="text-3xl font-bold text-foreground">{picked}</h3>
-            <SpeakButton text={picked} />
-          </motion.div>
-        ) : (
-          <p className="text-center text-foreground">Pick any glowing dot.</p>
-        )}
+      <div className="flex flex-col gap-4 rounded-3xl bg-card p-5 ring-1 ring-border">
+        <p className="text-center text-base text-muted-foreground">
+          Tap a body part to learn its name.
+        </p>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {PARTS.map((p) => {
+            const active = picked === p.name;
+            return (
+              <motion.button
+                key={p.name}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => tap(p.name)}
+                aria-label={p.name}
+                aria-pressed={active}
+                className="flex flex-col items-center gap-1 rounded-2xl p-3 ring-1 ring-border transition"
+                style={{ backgroundColor: active ? "var(--evs)" : "var(--background)" }}
+              >
+                <span className="text-4xl">{p.emoji}</span>
+                <span className="text-sm font-semibold text-foreground">{p.name}</span>
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
