@@ -187,14 +187,14 @@ const EnglishPhonicsIndexRoute = EnglishPhonicsIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnglishPhonicsRhymesRoute = EnglishPhonicsRhymesRouteImport.update({
-  id: '/rhymes',
-  path: '/rhymes',
-  getParentRoute: () => EnglishPhonicsRoute,
+  id: '/english/phonics/rhymes',
+  path: '/english/phonics/rhymes',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EnglishPhonicsCvcWordsRoute = EnglishPhonicsCvcWordsRouteImport.update({
-  id: '/cvc-words',
-  path: '/cvc-words',
-  getParentRoute: () => EnglishPhonicsRoute,
+  id: '/english/phonics/cvc-words',
+  path: '/english/phonics/cvc-words',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -428,6 +428,8 @@ export interface RootRouteChildren {
   EnglishIndexRoute: typeof EnglishIndexRoute
   EvsIndexRoute: typeof EvsIndexRoute
   MathIndexRoute: typeof MathIndexRoute
+  EnglishPhonicsCvcWordsRoute: typeof EnglishPhonicsCvcWordsRoute
+  EnglishPhonicsRhymesRoute: typeof EnglishPhonicsRhymesRoute
   EnglishPhonicsIndexRoute: typeof EnglishPhonicsIndexRoute
 }
 
@@ -638,17 +640,17 @@ declare module '@tanstack/react-router' {
     }
     '/english/phonics/rhymes': {
       id: '/english/phonics/rhymes'
-      path: '/rhymes'
+      path: '/english/phonics/rhymes'
       fullPath: '/english/phonics/rhymes'
       preLoaderRoute: typeof EnglishPhonicsRhymesRouteImport
-      parentRoute: typeof EnglishPhonicsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/english/phonics/cvc-words': {
       id: '/english/phonics/cvc-words'
-      path: '/cvc-words'
+      path: '/english/phonics/cvc-words'
       fullPath: '/english/phonics/cvc-words'
       preLoaderRoute: typeof EnglishPhonicsCvcWordsRouteImport
-      parentRoute: typeof EnglishPhonicsRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -682,18 +684,10 @@ const rootRouteChildren: RootRouteChildren = {
   EnglishIndexRoute: EnglishIndexRoute,
   EvsIndexRoute: EvsIndexRoute,
   MathIndexRoute: MathIndexRoute,
+  EnglishPhonicsCvcWordsRoute: EnglishPhonicsCvcWordsRoute,
+  EnglishPhonicsRhymesRoute: EnglishPhonicsRhymesRoute,
   EnglishPhonicsIndexRoute: EnglishPhonicsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
