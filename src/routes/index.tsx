@@ -69,22 +69,12 @@ function Home() {
         Pick something to learn today.
       </p>
 
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.08 } },
-        }}
-        className="mx-auto mt-10 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8"
-      >
-        {subjects.map((s) => (
-          <motion.div
+      <div className="mx-auto mt-10 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+        {subjects.map((s, i) => (
+          <div
             key={s.key}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0 },
-            }}
+            className="animate-in fade-in slide-in-from-bottom-3 duration-500"
+            style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
           >
             <SubjectTile
               to={s.to}
@@ -94,9 +84,9 @@ function Home() {
               fg={s.fg}
               disabled={!settings.subjectsEnabled[s.key]}
             />
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
