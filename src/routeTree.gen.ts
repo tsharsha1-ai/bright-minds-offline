@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfilesRouteImport } from './routes/profiles'
 import { Route as ParentRouteImport } from './routes/parent'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MathIndexRouteImport } from './routes/math.index'
@@ -31,6 +32,11 @@ import { Route as EnglishSentencesRouteImport } from './routes/english.sentences
 import { Route as EnglishPhonicsRouteImport } from './routes/english.phonics'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 
+const ProfilesRoute = ProfilesRouteImport.update({
+  id: '/profiles',
+  path: '/profiles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ParentRoute = ParentRouteImport.update({
   id: '/parent',
   path: '/parent',
@@ -140,6 +146,7 @@ const EnglishAlphabetRoute = EnglishAlphabetRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/parent': typeof ParentRoute
+  '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
@@ -163,6 +170,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/parent': typeof ParentRoute
+  '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
@@ -187,6 +195,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/parent': typeof ParentRoute
+  '/profiles': typeof ProfilesRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
   '/english/sentences': typeof EnglishSentencesRoute
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/parent'
+    | '/profiles'
     | '/english/alphabet'
     | '/english/phonics'
     | '/english/sentences'
@@ -235,6 +245,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/parent'
+    | '/profiles'
     | '/english/alphabet'
     | '/english/phonics'
     | '/english/sentences'
@@ -258,6 +269,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/parent'
+    | '/profiles'
     | '/english/alphabet'
     | '/english/phonics'
     | '/english/sentences'
@@ -282,6 +294,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ParentRoute: typeof ParentRoute
+  ProfilesRoute: typeof ProfilesRoute
   EnglishAlphabetRoute: typeof EnglishAlphabetRoute
   EnglishPhonicsRoute: typeof EnglishPhonicsRoute
   EnglishSentencesRoute: typeof EnglishSentencesRoute
@@ -305,6 +318,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/profiles': {
+      id: '/profiles'
+      path: '/profiles'
+      fullPath: '/profiles'
+      preLoaderRoute: typeof ProfilesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/parent': {
       id: '/parent'
       path: '/parent'
@@ -458,6 +478,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ParentRoute: ParentRoute,
+  ProfilesRoute: ProfilesRoute,
   EnglishAlphabetRoute: EnglishAlphabetRoute,
   EnglishPhonicsRoute: EnglishPhonicsRoute,
   EnglishSentencesRoute: EnglishSentencesRoute,
@@ -481,3 +502,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
