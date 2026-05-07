@@ -38,8 +38,17 @@ import { Route as EnglishSentencesRouteImport } from './routes/english.sentences
 import { Route as EnglishDigraphsRouteImport } from './routes/english.digraphs'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 import { Route as EnglishPhonicsIndexRouteImport } from './routes/english.phonics.index'
+import { Route as EnglishPhonicsTrickyWordsRouteImport } from './routes/english.phonics.tricky-words'
 import { Route as EnglishPhonicsRhymesRouteImport } from './routes/english.phonics.rhymes'
+import { Route as EnglishPhonicsGroup7RouteImport } from './routes/english.phonics.group-7'
+import { Route as EnglishPhonicsGroup6RouteImport } from './routes/english.phonics.group-6'
+import { Route as EnglishPhonicsGroup5RouteImport } from './routes/english.phonics.group-5'
+import { Route as EnglishPhonicsGroup4RouteImport } from './routes/english.phonics.group-4'
+import { Route as EnglishPhonicsGroup3RouteImport } from './routes/english.phonics.group-3'
+import { Route as EnglishPhonicsGroup2RouteImport } from './routes/english.phonics.group-2'
+import { Route as EnglishPhonicsGroup1RouteImport } from './routes/english.phonics.group-1'
 import { Route as EnglishPhonicsCvcWordsRouteImport } from './routes/english.phonics.cvc-words'
+import { Route as EnglishPhonicsBlendingRouteImport } from './routes/english.phonics.blending'
 
 const ProfilesRoute = ProfilesRouteImport.update({
   id: '/profiles',
@@ -186,14 +195,60 @@ const EnglishPhonicsIndexRoute = EnglishPhonicsIndexRouteImport.update({
   path: '/english/phonics/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnglishPhonicsTrickyWordsRoute =
+  EnglishPhonicsTrickyWordsRouteImport.update({
+    id: '/english/phonics/tricky-words',
+    path: '/english/phonics/tricky-words',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EnglishPhonicsRhymesRoute = EnglishPhonicsRhymesRouteImport.update({
   id: '/english/phonics/rhymes',
   path: '/english/phonics/rhymes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnglishPhonicsGroup7Route = EnglishPhonicsGroup7RouteImport.update({
+  id: '/english/phonics/group-7',
+  path: '/english/phonics/group-7',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishPhonicsGroup6Route = EnglishPhonicsGroup6RouteImport.update({
+  id: '/english/phonics/group-6',
+  path: '/english/phonics/group-6',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishPhonicsGroup5Route = EnglishPhonicsGroup5RouteImport.update({
+  id: '/english/phonics/group-5',
+  path: '/english/phonics/group-5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishPhonicsGroup4Route = EnglishPhonicsGroup4RouteImport.update({
+  id: '/english/phonics/group-4',
+  path: '/english/phonics/group-4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishPhonicsGroup3Route = EnglishPhonicsGroup3RouteImport.update({
+  id: '/english/phonics/group-3',
+  path: '/english/phonics/group-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishPhonicsGroup2Route = EnglishPhonicsGroup2RouteImport.update({
+  id: '/english/phonics/group-2',
+  path: '/english/phonics/group-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishPhonicsGroup1Route = EnglishPhonicsGroup1RouteImport.update({
+  id: '/english/phonics/group-1',
+  path: '/english/phonics/group-1',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnglishPhonicsCvcWordsRoute = EnglishPhonicsCvcWordsRouteImport.update({
   id: '/english/phonics/cvc-words',
   path: '/english/phonics/cvc-words',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishPhonicsBlendingRoute = EnglishPhonicsBlendingRouteImport.update({
+  id: '/english/phonics/blending',
+  path: '/english/phonics/blending',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -226,8 +281,17 @@ export interface FileRoutesByFullPath {
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
+  '/english/phonics/blending': typeof EnglishPhonicsBlendingRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
+  '/english/phonics/group-1': typeof EnglishPhonicsGroup1Route
+  '/english/phonics/group-2': typeof EnglishPhonicsGroup2Route
+  '/english/phonics/group-3': typeof EnglishPhonicsGroup3Route
+  '/english/phonics/group-4': typeof EnglishPhonicsGroup4Route
+  '/english/phonics/group-5': typeof EnglishPhonicsGroup5Route
+  '/english/phonics/group-6': typeof EnglishPhonicsGroup6Route
+  '/english/phonics/group-7': typeof EnglishPhonicsGroup7Route
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
+  '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -259,8 +323,17 @@ export interface FileRoutesByTo {
   '/english': typeof EnglishIndexRoute
   '/evs': typeof EvsIndexRoute
   '/math': typeof MathIndexRoute
+  '/english/phonics/blending': typeof EnglishPhonicsBlendingRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
+  '/english/phonics/group-1': typeof EnglishPhonicsGroup1Route
+  '/english/phonics/group-2': typeof EnglishPhonicsGroup2Route
+  '/english/phonics/group-3': typeof EnglishPhonicsGroup3Route
+  '/english/phonics/group-4': typeof EnglishPhonicsGroup4Route
+  '/english/phonics/group-5': typeof EnglishPhonicsGroup5Route
+  '/english/phonics/group-6': typeof EnglishPhonicsGroup6Route
+  '/english/phonics/group-7': typeof EnglishPhonicsGroup7Route
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
+  '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
   '/english/phonics': typeof EnglishPhonicsIndexRoute
 }
 export interface FileRoutesById {
@@ -293,8 +366,17 @@ export interface FileRoutesById {
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
+  '/english/phonics/blending': typeof EnglishPhonicsBlendingRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
+  '/english/phonics/group-1': typeof EnglishPhonicsGroup1Route
+  '/english/phonics/group-2': typeof EnglishPhonicsGroup2Route
+  '/english/phonics/group-3': typeof EnglishPhonicsGroup3Route
+  '/english/phonics/group-4': typeof EnglishPhonicsGroup4Route
+  '/english/phonics/group-5': typeof EnglishPhonicsGroup5Route
+  '/english/phonics/group-6': typeof EnglishPhonicsGroup6Route
+  '/english/phonics/group-7': typeof EnglishPhonicsGroup7Route
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
+  '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
 }
 export interface FileRouteTypes {
@@ -328,8 +410,17 @@ export interface FileRouteTypes {
     | '/english/'
     | '/evs/'
     | '/math/'
+    | '/english/phonics/blending'
     | '/english/phonics/cvc-words'
+    | '/english/phonics/group-1'
+    | '/english/phonics/group-2'
+    | '/english/phonics/group-3'
+    | '/english/phonics/group-4'
+    | '/english/phonics/group-5'
+    | '/english/phonics/group-6'
+    | '/english/phonics/group-7'
     | '/english/phonics/rhymes'
+    | '/english/phonics/tricky-words'
     | '/english/phonics/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -361,8 +452,17 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/english/phonics/blending'
     | '/english/phonics/cvc-words'
+    | '/english/phonics/group-1'
+    | '/english/phonics/group-2'
+    | '/english/phonics/group-3'
+    | '/english/phonics/group-4'
+    | '/english/phonics/group-5'
+    | '/english/phonics/group-6'
+    | '/english/phonics/group-7'
     | '/english/phonics/rhymes'
+    | '/english/phonics/tricky-words'
     | '/english/phonics'
   id:
     | '__root__'
@@ -394,8 +494,17 @@ export interface FileRouteTypes {
     | '/english/'
     | '/evs/'
     | '/math/'
+    | '/english/phonics/blending'
     | '/english/phonics/cvc-words'
+    | '/english/phonics/group-1'
+    | '/english/phonics/group-2'
+    | '/english/phonics/group-3'
+    | '/english/phonics/group-4'
+    | '/english/phonics/group-5'
+    | '/english/phonics/group-6'
+    | '/english/phonics/group-7'
     | '/english/phonics/rhymes'
+    | '/english/phonics/tricky-words'
     | '/english/phonics/'
   fileRoutesById: FileRoutesById
 }
@@ -428,8 +537,17 @@ export interface RootRouteChildren {
   EnglishIndexRoute: typeof EnglishIndexRoute
   EvsIndexRoute: typeof EvsIndexRoute
   MathIndexRoute: typeof MathIndexRoute
+  EnglishPhonicsBlendingRoute: typeof EnglishPhonicsBlendingRoute
   EnglishPhonicsCvcWordsRoute: typeof EnglishPhonicsCvcWordsRoute
+  EnglishPhonicsGroup1Route: typeof EnglishPhonicsGroup1Route
+  EnglishPhonicsGroup2Route: typeof EnglishPhonicsGroup2Route
+  EnglishPhonicsGroup3Route: typeof EnglishPhonicsGroup3Route
+  EnglishPhonicsGroup4Route: typeof EnglishPhonicsGroup4Route
+  EnglishPhonicsGroup5Route: typeof EnglishPhonicsGroup5Route
+  EnglishPhonicsGroup6Route: typeof EnglishPhonicsGroup6Route
+  EnglishPhonicsGroup7Route: typeof EnglishPhonicsGroup7Route
   EnglishPhonicsRhymesRoute: typeof EnglishPhonicsRhymesRoute
+  EnglishPhonicsTrickyWordsRoute: typeof EnglishPhonicsTrickyWordsRoute
   EnglishPhonicsIndexRoute: typeof EnglishPhonicsIndexRoute
 }
 
@@ -638,6 +756,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishPhonicsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/english/phonics/tricky-words': {
+      id: '/english/phonics/tricky-words'
+      path: '/english/phonics/tricky-words'
+      fullPath: '/english/phonics/tricky-words'
+      preLoaderRoute: typeof EnglishPhonicsTrickyWordsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/english/phonics/rhymes': {
       id: '/english/phonics/rhymes'
       path: '/english/phonics/rhymes'
@@ -645,11 +770,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishPhonicsRhymesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/english/phonics/group-7': {
+      id: '/english/phonics/group-7'
+      path: '/english/phonics/group-7'
+      fullPath: '/english/phonics/group-7'
+      preLoaderRoute: typeof EnglishPhonicsGroup7RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/phonics/group-6': {
+      id: '/english/phonics/group-6'
+      path: '/english/phonics/group-6'
+      fullPath: '/english/phonics/group-6'
+      preLoaderRoute: typeof EnglishPhonicsGroup6RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/phonics/group-5': {
+      id: '/english/phonics/group-5'
+      path: '/english/phonics/group-5'
+      fullPath: '/english/phonics/group-5'
+      preLoaderRoute: typeof EnglishPhonicsGroup5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/phonics/group-4': {
+      id: '/english/phonics/group-4'
+      path: '/english/phonics/group-4'
+      fullPath: '/english/phonics/group-4'
+      preLoaderRoute: typeof EnglishPhonicsGroup4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/phonics/group-3': {
+      id: '/english/phonics/group-3'
+      path: '/english/phonics/group-3'
+      fullPath: '/english/phonics/group-3'
+      preLoaderRoute: typeof EnglishPhonicsGroup3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/phonics/group-2': {
+      id: '/english/phonics/group-2'
+      path: '/english/phonics/group-2'
+      fullPath: '/english/phonics/group-2'
+      preLoaderRoute: typeof EnglishPhonicsGroup2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/phonics/group-1': {
+      id: '/english/phonics/group-1'
+      path: '/english/phonics/group-1'
+      fullPath: '/english/phonics/group-1'
+      preLoaderRoute: typeof EnglishPhonicsGroup1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/english/phonics/cvc-words': {
       id: '/english/phonics/cvc-words'
       path: '/english/phonics/cvc-words'
       fullPath: '/english/phonics/cvc-words'
       preLoaderRoute: typeof EnglishPhonicsCvcWordsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/phonics/blending': {
+      id: '/english/phonics/blending'
+      path: '/english/phonics/blending'
+      fullPath: '/english/phonics/blending'
+      preLoaderRoute: typeof EnglishPhonicsBlendingRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -684,8 +865,17 @@ const rootRouteChildren: RootRouteChildren = {
   EnglishIndexRoute: EnglishIndexRoute,
   EvsIndexRoute: EvsIndexRoute,
   MathIndexRoute: MathIndexRoute,
+  EnglishPhonicsBlendingRoute: EnglishPhonicsBlendingRoute,
   EnglishPhonicsCvcWordsRoute: EnglishPhonicsCvcWordsRoute,
+  EnglishPhonicsGroup1Route: EnglishPhonicsGroup1Route,
+  EnglishPhonicsGroup2Route: EnglishPhonicsGroup2Route,
+  EnglishPhonicsGroup3Route: EnglishPhonicsGroup3Route,
+  EnglishPhonicsGroup4Route: EnglishPhonicsGroup4Route,
+  EnglishPhonicsGroup5Route: EnglishPhonicsGroup5Route,
+  EnglishPhonicsGroup6Route: EnglishPhonicsGroup6Route,
+  EnglishPhonicsGroup7Route: EnglishPhonicsGroup7Route,
   EnglishPhonicsRhymesRoute: EnglishPhonicsRhymesRoute,
+  EnglishPhonicsTrickyWordsRoute: EnglishPhonicsTrickyWordsRoute,
   EnglishPhonicsIndexRoute: EnglishPhonicsIndexRoute,
 }
 export const routeTree = rootRouteImport
