@@ -85,7 +85,7 @@ export const fetchContent = createServerFn({ method: "POST" })
     if (!cfg) throw new Error(`Unknown module: ${data.module}`);
 
     // 1. Try cache — pick a random recent variant for variety
-    const supabaseAdmin = await getAdmin();
+    const supabaseAdmin = getAdmin();
     if (!data.fresh) {
       const { data: rows } = await supabaseAdmin
         .from("content_cache")
