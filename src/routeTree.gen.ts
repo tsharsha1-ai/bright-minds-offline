@@ -10,10 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ParentRouteImport } from './routes/parent'
-import { Route as MathRouteImport } from './routes/math'
-import { Route as EvsRouteImport } from './routes/evs'
-import { Route as EnglishRouteImport } from './routes/english'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MathIndexRouteImport } from './routes/math.index'
+import { Route as EvsIndexRouteImport } from './routes/evs.index'
+import { Route as EnglishIndexRouteImport } from './routes/english.index'
 import { Route as MathShapesRouteImport } from './routes/math.shapes'
 import { Route as MathNumbersRouteImport } from './routes/math.numbers'
 import { Route as MathCountingRouteImport } from './routes/math.counting'
@@ -36,24 +36,24 @@ const ParentRoute = ParentRouteImport.update({
   path: '/parent',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MathRoute = MathRouteImport.update({
-  id: '/math',
-  path: '/math',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EvsRoute = EvsRouteImport.update({
-  id: '/evs',
-  path: '/evs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnglishRoute = EnglishRouteImport.update({
-  id: '/english',
-  path: '/english',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MathIndexRoute = MathIndexRouteImport.update({
+  id: '/math/',
+  path: '/math/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvsIndexRoute = EvsIndexRouteImport.update({
+  id: '/evs/',
+  path: '/evs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnglishIndexRoute = EnglishIndexRouteImport.update({
+  id: '/english/',
+  path: '/english/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MathShapesRoute = MathShapesRouteImport.update({
@@ -139,9 +139,6 @@ const EnglishAlphabetRoute = EnglishAlphabetRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/english': typeof EnglishRouteWithChildren
-  '/evs': typeof EvsRouteWithChildren
-  '/math': typeof MathRouteWithChildren
   '/parent': typeof ParentRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
@@ -159,12 +156,12 @@ export interface FileRoutesByFullPath {
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
   '/math/shapes': typeof MathShapesRoute
+  '/english/': typeof EnglishIndexRoute
+  '/evs/': typeof EvsIndexRoute
+  '/math/': typeof MathIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/english': typeof EnglishRouteWithChildren
-  '/evs': typeof EvsRouteWithChildren
-  '/math': typeof MathRouteWithChildren
   '/parent': typeof ParentRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
@@ -182,13 +179,13 @@ export interface FileRoutesByTo {
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
   '/math/shapes': typeof MathShapesRoute
+  '/english': typeof EnglishIndexRoute
+  '/evs': typeof EvsIndexRoute
+  '/math': typeof MathIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/english': typeof EnglishRouteWithChildren
-  '/evs': typeof EvsRouteWithChildren
-  '/math': typeof MathRouteWithChildren
   '/parent': typeof ParentRoute
   '/english/alphabet': typeof EnglishAlphabetRoute
   '/english/phonics': typeof EnglishPhonicsRoute
@@ -206,14 +203,14 @@ export interface FileRoutesById {
   '/math/counting': typeof MathCountingRoute
   '/math/numbers': typeof MathNumbersRoute
   '/math/shapes': typeof MathShapesRoute
+  '/english/': typeof EnglishIndexRoute
+  '/evs/': typeof EvsIndexRoute
+  '/math/': typeof MathIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/english'
-    | '/evs'
-    | '/math'
     | '/parent'
     | '/english/alphabet'
     | '/english/phonics'
@@ -231,12 +228,12 @@ export interface FileRouteTypes {
     | '/math/counting'
     | '/math/numbers'
     | '/math/shapes'
+    | '/english/'
+    | '/evs/'
+    | '/math/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/english'
-    | '/evs'
-    | '/math'
     | '/parent'
     | '/english/alphabet'
     | '/english/phonics'
@@ -254,12 +251,12 @@ export interface FileRouteTypes {
     | '/math/counting'
     | '/math/numbers'
     | '/math/shapes'
+    | '/english'
+    | '/evs'
+    | '/math'
   id:
     | '__root__'
     | '/'
-    | '/english'
-    | '/evs'
-    | '/math'
     | '/parent'
     | '/english/alphabet'
     | '/english/phonics'
@@ -277,14 +274,17 @@ export interface FileRouteTypes {
     | '/math/counting'
     | '/math/numbers'
     | '/math/shapes'
+    | '/english/'
+    | '/evs/'
+    | '/math/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  EnglishRoute: typeof EnglishRouteWithChildren
-  EvsRoute: typeof EvsRouteWithChildren
-  MathRoute: typeof MathRouteWithChildren
   ParentRoute: typeof ParentRoute
+  EnglishIndexRoute: typeof EnglishIndexRoute
+  EvsIndexRoute: typeof EvsIndexRoute
+  MathIndexRoute: typeof MathIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -296,32 +296,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ParentRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/math': {
-      id: '/math'
-      path: '/math'
-      fullPath: '/math'
-      preLoaderRoute: typeof MathRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/evs': {
-      id: '/evs'
-      path: '/evs'
-      fullPath: '/evs'
-      preLoaderRoute: typeof EvsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/english': {
-      id: '/english'
-      path: '/english'
-      fullPath: '/english'
-      preLoaderRoute: typeof EnglishRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/math/': {
+      id: '/math/'
+      path: '/math'
+      fullPath: '/math/'
+      preLoaderRoute: typeof MathIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evs/': {
+      id: '/evs/'
+      path: '/evs'
+      fullPath: '/evs/'
+      preLoaderRoute: typeof EvsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/english/': {
+      id: '/english/'
+      path: '/english'
+      fullPath: '/english/'
+      preLoaderRoute: typeof EnglishIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/math/shapes': {
@@ -439,70 +439,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface EnglishRouteChildren {
-  EnglishAlphabetRoute: typeof EnglishAlphabetRoute
-  EnglishPhonicsRoute: typeof EnglishPhonicsRoute
-  EnglishSentencesRoute: typeof EnglishSentencesRoute
-  EnglishSightWordsRoute: typeof EnglishSightWordsRoute
-  EnglishTracingRoute: typeof EnglishTracingRoute
-}
-
-const EnglishRouteChildren: EnglishRouteChildren = {
-  EnglishAlphabetRoute: EnglishAlphabetRoute,
-  EnglishPhonicsRoute: EnglishPhonicsRoute,
-  EnglishSentencesRoute: EnglishSentencesRoute,
-  EnglishSightWordsRoute: EnglishSightWordsRoute,
-  EnglishTracingRoute: EnglishTracingRoute,
-}
-
-const EnglishRouteWithChildren =
-  EnglishRoute._addFileChildren(EnglishRouteChildren)
-
-interface EvsRouteChildren {
-  EvsAnimalsRoute: typeof EvsAnimalsRoute
-  EvsBodyRoute: typeof EvsBodyRoute
-  EvsEmotionsRoute: typeof EvsEmotionsRoute
-  EvsFamilyRoute: typeof EvsFamilyRoute
-  EvsFoodRoute: typeof EvsFoodRoute
-  EvsRoutinesRoute: typeof EvsRoutinesRoute
-}
-
-const EvsRouteChildren: EvsRouteChildren = {
-  EvsAnimalsRoute: EvsAnimalsRoute,
-  EvsBodyRoute: EvsBodyRoute,
-  EvsEmotionsRoute: EvsEmotionsRoute,
-  EvsFamilyRoute: EvsFamilyRoute,
-  EvsFoodRoute: EvsFoodRoute,
-  EvsRoutinesRoute: EvsRoutinesRoute,
-}
-
-const EvsRouteWithChildren = EvsRoute._addFileChildren(EvsRouteChildren)
-
-interface MathRouteChildren {
-  MathAddsubRoute: typeof MathAddsubRoute
-  MathCompareRoute: typeof MathCompareRoute
-  MathCountingRoute: typeof MathCountingRoute
-  MathNumbersRoute: typeof MathNumbersRoute
-  MathShapesRoute: typeof MathShapesRoute
-}
-
-const MathRouteChildren: MathRouteChildren = {
-  MathAddsubRoute: MathAddsubRoute,
-  MathCompareRoute: MathCompareRoute,
-  MathCountingRoute: MathCountingRoute,
-  MathNumbersRoute: MathNumbersRoute,
-  MathShapesRoute: MathShapesRoute,
-}
-
-const MathRouteWithChildren = MathRoute._addFileChildren(MathRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  EnglishRoute: EnglishRouteWithChildren,
-  EvsRoute: EvsRouteWithChildren,
-  MathRoute: MathRouteWithChildren,
   ParentRoute: ParentRoute,
+  EnglishIndexRoute: EnglishIndexRoute,
+  EvsIndexRoute: EvsIndexRoute,
+  MathIndexRoute: MathIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

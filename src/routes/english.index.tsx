@@ -3,23 +3,23 @@ import { TopBar } from "@/components/TopBar";
 import { LessonCard, PageShell } from "@/components/learning";
 import { useProgress } from "@/hooks/use-progress";
 
-export const Route = createFileRoute("/math")({
-  component: MathHub,
+export const Route = createFileRoute("/english/")({
+  component: EnglishHub,
 });
 
 const lessons = [
-  { id: "math.numbers", to: "/math/numbers", title: "Numbers 1–100", emoji: "🔢" },
-  { id: "math.counting", to: "/math/counting", title: "Counting", emoji: "🍎" },
-  { id: "math.addsub", to: "/math/addsub", title: "Add & Subtract", emoji: "➕" },
-  { id: "math.shapes", to: "/math/shapes", title: "Shapes", emoji: "🔺" },
-  { id: "math.compare", to: "/math/compare", title: "More or Less", emoji: "⚖️" },
+  { id: "en.alphabet", to: "/english/alphabet", title: "A to Z", emoji: "🔤" },
+  { id: "en.phonics", to: "/english/phonics", title: "Phonics", emoji: "🗣️" },
+  { id: "en.tracing", to: "/english/tracing", title: "Tracing", emoji: "✏️" },
+  { id: "en.sight", to: "/english/sight-words", title: "Sight Words", emoji: "📖" },
+  { id: "en.sentences", to: "/english/sentences", title: "Picture Words", emoji: "🖼️" },
 ];
 
-function MathHub() {
+function EnglishHub() {
   const { progress } = useProgress();
   return (
     <>
-      <TopBar title="Numbers" />
+      <TopBar title="Letters" />
       <PageShell>
         <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
           {lessons.map((l) => (

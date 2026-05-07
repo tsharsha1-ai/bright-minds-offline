@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { LessonCard, PageShell } from "@/components/learning";
 import { useProgress } from "@/hooks/use-progress";
 
-export const Route = createFileRoute("/evs")({
+export const Route = createFileRoute("/evs/")({
   component: EvsHub,
 });
 
