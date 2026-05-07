@@ -1,6 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { Settings as SettingsIcon, Volume2, VolumeX, Users } from "lucide-react";
 import { SubjectTile } from "@/components/learning";
+import { ModeTabs } from "@/components/ModeTabs";
+import { useMode } from "@/hooks/use-mode";
 import { useSettings } from "@/hooks/use-settings";
 import { useProfiles } from "@/hooks/use-profiles";
 import { ProfilePicker } from "@/components/ProfilePicker";
@@ -12,6 +15,15 @@ export const Route = createFileRoute("/")({
 function Home() {
   const { settings, update } = useSettings();
   const { active, profiles } = useProfiles();
+  const { mode } = useMode();
+  const navigate = useNavigate();
+
+  // When mode flips to online, jump straight into the online hub
+  useEffect(() => {
+    if (active && mode === "online") {
+      navigate({ to: "/online" });
+    }
+  }, [active, mode, navigate]);
 
   // No profile chosen yet → show kid picker
   if (!active) {
@@ -74,9 +86,11 @@ function Home() {
         </div>
       </div>
 
+      <ModeTabs />
+
       <Link
         to="/assessment"
-        className="mx-auto mt-8 flex w-full max-w-5xl items-center justify-between gap-4 rounded-3xl p-5 shadow-sm ring-1 ring-border transition active:scale-[0.99]"
+        className="mx-auto mt-6 flex w-full max-w-5xl items-center justify-between gap-4 rounded-3xl p-5 shadow-sm ring-1 ring-border transition active:scale-[0.99]"
         style={{ background: "linear-gradient(135deg, var(--star) 0%, var(--english) 100%)" }}
       >
         <div className="flex items-center gap-4">

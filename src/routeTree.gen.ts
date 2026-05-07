@@ -13,9 +13,11 @@ import { Route as ProfilesRouteImport } from './routes/profiles'
 import { Route as ParentRouteImport } from './routes/parent'
 import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OnlineIndexRouteImport } from './routes/online.index'
 import { Route as MathIndexRouteImport } from './routes/math.index'
 import { Route as EvsIndexRouteImport } from './routes/evs.index'
 import { Route as EnglishIndexRouteImport } from './routes/english.index'
+import { Route as OnlineModuleRouteImport } from './routes/online.$module'
 import { Route as MathTimesTablesRouteImport } from './routes/math.times-tables'
 import { Route as MathShapesRouteImport } from './routes/math.shapes'
 import { Route as MathPlaceValueRouteImport } from './routes/math.place-value'
@@ -72,6 +74,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnlineIndexRoute = OnlineIndexRouteImport.update({
+  id: '/online/',
+  path: '/online/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MathIndexRoute = MathIndexRouteImport.update({
   id: '/math/',
   path: '/math/',
@@ -85,6 +92,11 @@ const EvsIndexRoute = EvsIndexRouteImport.update({
 const EnglishIndexRoute = EnglishIndexRouteImport.update({
   id: '/english/',
   path: '/english/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineModuleRoute = OnlineModuleRouteImport.update({
+  id: '/online/$module',
+  path: '/online/$module',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MathTimesTablesRoute = MathTimesTablesRouteImport.update({
@@ -290,9 +302,11 @@ export interface FileRoutesByFullPath {
   '/math/place-value': typeof MathPlaceValueRoute
   '/math/shapes': typeof MathShapesRoute
   '/math/times-tables': typeof MathTimesTablesRoute
+  '/online/$module': typeof OnlineModuleRoute
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
+  '/online/': typeof OnlineIndexRoute
   '/english/phonics/blending': typeof EnglishPhonicsBlendingRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
   '/english/phonics/group-1': typeof EnglishPhonicsGroup1Route
@@ -334,9 +348,11 @@ export interface FileRoutesByTo {
   '/math/place-value': typeof MathPlaceValueRoute
   '/math/shapes': typeof MathShapesRoute
   '/math/times-tables': typeof MathTimesTablesRoute
+  '/online/$module': typeof OnlineModuleRoute
   '/english': typeof EnglishIndexRoute
   '/evs': typeof EvsIndexRoute
   '/math': typeof MathIndexRoute
+  '/online': typeof OnlineIndexRoute
   '/english/phonics/blending': typeof EnglishPhonicsBlendingRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
   '/english/phonics/group-1': typeof EnglishPhonicsGroup1Route
@@ -379,9 +395,11 @@ export interface FileRoutesById {
   '/math/place-value': typeof MathPlaceValueRoute
   '/math/shapes': typeof MathShapesRoute
   '/math/times-tables': typeof MathTimesTablesRoute
+  '/online/$module': typeof OnlineModuleRoute
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
+  '/online/': typeof OnlineIndexRoute
   '/english/phonics/blending': typeof EnglishPhonicsBlendingRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
   '/english/phonics/group-1': typeof EnglishPhonicsGroup1Route
@@ -425,9 +443,11 @@ export interface FileRouteTypes {
     | '/math/place-value'
     | '/math/shapes'
     | '/math/times-tables'
+    | '/online/$module'
     | '/english/'
     | '/evs/'
     | '/math/'
+    | '/online/'
     | '/english/phonics/blending'
     | '/english/phonics/cvc-words'
     | '/english/phonics/group-1'
@@ -469,9 +489,11 @@ export interface FileRouteTypes {
     | '/math/place-value'
     | '/math/shapes'
     | '/math/times-tables'
+    | '/online/$module'
     | '/english'
     | '/evs'
     | '/math'
+    | '/online'
     | '/english/phonics/blending'
     | '/english/phonics/cvc-words'
     | '/english/phonics/group-1'
@@ -513,9 +535,11 @@ export interface FileRouteTypes {
     | '/math/place-value'
     | '/math/shapes'
     | '/math/times-tables'
+    | '/online/$module'
     | '/english/'
     | '/evs/'
     | '/math/'
+    | '/online/'
     | '/english/phonics/blending'
     | '/english/phonics/cvc-words'
     | '/english/phonics/group-1'
@@ -558,9 +582,11 @@ export interface RootRouteChildren {
   MathPlaceValueRoute: typeof MathPlaceValueRoute
   MathShapesRoute: typeof MathShapesRoute
   MathTimesTablesRoute: typeof MathTimesTablesRoute
+  OnlineModuleRoute: typeof OnlineModuleRoute
   EnglishIndexRoute: typeof EnglishIndexRoute
   EvsIndexRoute: typeof EvsIndexRoute
   MathIndexRoute: typeof MathIndexRoute
+  OnlineIndexRoute: typeof OnlineIndexRoute
   EnglishPhonicsBlendingRoute: typeof EnglishPhonicsBlendingRoute
   EnglishPhonicsCvcWordsRoute: typeof EnglishPhonicsCvcWordsRoute
   EnglishPhonicsGroup1Route: typeof EnglishPhonicsGroup1Route
@@ -607,6 +633,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/online/': {
+      id: '/online/'
+      path: '/online'
+      fullPath: '/online/'
+      preLoaderRoute: typeof OnlineIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/math/': {
       id: '/math/'
       path: '/math'
@@ -626,6 +659,13 @@ declare module '@tanstack/react-router' {
       path: '/english'
       fullPath: '/english/'
       preLoaderRoute: typeof EnglishIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online/$module': {
+      id: '/online/$module'
+      path: '/online/$module'
+      fullPath: '/online/$module'
+      preLoaderRoute: typeof OnlineModuleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/math/times-tables': {
@@ -902,9 +942,11 @@ const rootRouteChildren: RootRouteChildren = {
   MathPlaceValueRoute: MathPlaceValueRoute,
   MathShapesRoute: MathShapesRoute,
   MathTimesTablesRoute: MathTimesTablesRoute,
+  OnlineModuleRoute: OnlineModuleRoute,
   EnglishIndexRoute: EnglishIndexRoute,
   EvsIndexRoute: EvsIndexRoute,
   MathIndexRoute: MathIndexRoute,
+  OnlineIndexRoute: OnlineIndexRoute,
   EnglishPhonicsBlendingRoute: EnglishPhonicsBlendingRoute,
   EnglishPhonicsCvcWordsRoute: EnglishPhonicsCvcWordsRoute,
   EnglishPhonicsGroup1Route: EnglishPhonicsGroup1Route,
@@ -923,13 +965,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
