@@ -38,12 +38,8 @@ import { Route as EnglishSentencesRouteImport } from './routes/english.sentences
 import { Route as EnglishDigraphsRouteImport } from './routes/english.digraphs'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 import { Route as EnglishPhonicsIndexRouteImport } from './routes/english.phonics.index'
-import { Route as EnglishPhonicsShortVowelsRouteImport } from './routes/english.phonics.short-vowels'
 import { Route as EnglishPhonicsRhymesRouteImport } from './routes/english.phonics.rhymes'
-import { Route as EnglishPhonicsLongVowelsRouteImport } from './routes/english.phonics.long-vowels'
-import { Route as EnglishPhonicsLetterSoundsRouteImport } from './routes/english.phonics.letter-sounds'
 import { Route as EnglishPhonicsCvcWordsRouteImport } from './routes/english.phonics.cvc-words'
-import { Route as EnglishPhonicsBlendsRouteImport } from './routes/english.phonics.blends'
 
 const ProfilesRoute = ProfilesRouteImport.update({
   id: '/profiles',
@@ -190,38 +186,15 @@ const EnglishPhonicsIndexRoute = EnglishPhonicsIndexRouteImport.update({
   path: '/english/phonics/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EnglishPhonicsShortVowelsRoute =
-  EnglishPhonicsShortVowelsRouteImport.update({
-    id: '/english/phonics/short-vowels',
-    path: '/english/phonics/short-vowels',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const EnglishPhonicsRhymesRoute = EnglishPhonicsRhymesRouteImport.update({
-  id: '/english/phonics/rhymes',
-  path: '/english/phonics/rhymes',
-  getParentRoute: () => rootRouteImport,
+  id: '/rhymes',
+  path: '/rhymes',
+  getParentRoute: () => EnglishPhonicsRoute,
 } as any)
-const EnglishPhonicsLongVowelsRoute =
-  EnglishPhonicsLongVowelsRouteImport.update({
-    id: '/english/phonics/long-vowels',
-    path: '/english/phonics/long-vowels',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EnglishPhonicsLetterSoundsRoute =
-  EnglishPhonicsLetterSoundsRouteImport.update({
-    id: '/english/phonics/letter-sounds',
-    path: '/english/phonics/letter-sounds',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const EnglishPhonicsCvcWordsRoute = EnglishPhonicsCvcWordsRouteImport.update({
-  id: '/english/phonics/cvc-words',
-  path: '/english/phonics/cvc-words',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnglishPhonicsBlendsRoute = EnglishPhonicsBlendsRouteImport.update({
-  id: '/english/phonics/blends',
-  path: '/english/phonics/blends',
-  getParentRoute: () => rootRouteImport,
+  id: '/cvc-words',
+  path: '/cvc-words',
+  getParentRoute: () => EnglishPhonicsRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -253,12 +226,8 @@ export interface FileRoutesByFullPath {
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
-  '/english/phonics/blends': typeof EnglishPhonicsBlendsRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
-  '/english/phonics/letter-sounds': typeof EnglishPhonicsLetterSoundsRoute
-  '/english/phonics/long-vowels': typeof EnglishPhonicsLongVowelsRoute
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
-  '/english/phonics/short-vowels': typeof EnglishPhonicsShortVowelsRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -290,12 +259,8 @@ export interface FileRoutesByTo {
   '/english': typeof EnglishIndexRoute
   '/evs': typeof EvsIndexRoute
   '/math': typeof MathIndexRoute
-  '/english/phonics/blends': typeof EnglishPhonicsBlendsRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
-  '/english/phonics/letter-sounds': typeof EnglishPhonicsLetterSoundsRoute
-  '/english/phonics/long-vowels': typeof EnglishPhonicsLongVowelsRoute
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
-  '/english/phonics/short-vowels': typeof EnglishPhonicsShortVowelsRoute
   '/english/phonics': typeof EnglishPhonicsIndexRoute
 }
 export interface FileRoutesById {
@@ -328,12 +293,8 @@ export interface FileRoutesById {
   '/english/': typeof EnglishIndexRoute
   '/evs/': typeof EvsIndexRoute
   '/math/': typeof MathIndexRoute
-  '/english/phonics/blends': typeof EnglishPhonicsBlendsRoute
   '/english/phonics/cvc-words': typeof EnglishPhonicsCvcWordsRoute
-  '/english/phonics/letter-sounds': typeof EnglishPhonicsLetterSoundsRoute
-  '/english/phonics/long-vowels': typeof EnglishPhonicsLongVowelsRoute
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
-  '/english/phonics/short-vowels': typeof EnglishPhonicsShortVowelsRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
 }
 export interface FileRouteTypes {
@@ -367,12 +328,8 @@ export interface FileRouteTypes {
     | '/english/'
     | '/evs/'
     | '/math/'
-    | '/english/phonics/blends'
     | '/english/phonics/cvc-words'
-    | '/english/phonics/letter-sounds'
-    | '/english/phonics/long-vowels'
     | '/english/phonics/rhymes'
-    | '/english/phonics/short-vowels'
     | '/english/phonics/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -404,12 +361,8 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
-    | '/english/phonics/blends'
     | '/english/phonics/cvc-words'
-    | '/english/phonics/letter-sounds'
-    | '/english/phonics/long-vowels'
     | '/english/phonics/rhymes'
-    | '/english/phonics/short-vowels'
     | '/english/phonics'
   id:
     | '__root__'
@@ -441,12 +394,8 @@ export interface FileRouteTypes {
     | '/english/'
     | '/evs/'
     | '/math/'
-    | '/english/phonics/blends'
     | '/english/phonics/cvc-words'
-    | '/english/phonics/letter-sounds'
-    | '/english/phonics/long-vowels'
     | '/english/phonics/rhymes'
-    | '/english/phonics/short-vowels'
     | '/english/phonics/'
   fileRoutesById: FileRoutesById
 }
@@ -479,12 +428,6 @@ export interface RootRouteChildren {
   EnglishIndexRoute: typeof EnglishIndexRoute
   EvsIndexRoute: typeof EvsIndexRoute
   MathIndexRoute: typeof MathIndexRoute
-  EnglishPhonicsBlendsRoute: typeof EnglishPhonicsBlendsRoute
-  EnglishPhonicsCvcWordsRoute: typeof EnglishPhonicsCvcWordsRoute
-  EnglishPhonicsLetterSoundsRoute: typeof EnglishPhonicsLetterSoundsRoute
-  EnglishPhonicsLongVowelsRoute: typeof EnglishPhonicsLongVowelsRoute
-  EnglishPhonicsRhymesRoute: typeof EnglishPhonicsRhymesRoute
-  EnglishPhonicsShortVowelsRoute: typeof EnglishPhonicsShortVowelsRoute
   EnglishPhonicsIndexRoute: typeof EnglishPhonicsIndexRoute
 }
 
@@ -693,47 +636,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishPhonicsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/english/phonics/short-vowels': {
-      id: '/english/phonics/short-vowels'
-      path: '/english/phonics/short-vowels'
-      fullPath: '/english/phonics/short-vowels'
-      preLoaderRoute: typeof EnglishPhonicsShortVowelsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/english/phonics/rhymes': {
       id: '/english/phonics/rhymes'
-      path: '/english/phonics/rhymes'
+      path: '/rhymes'
       fullPath: '/english/phonics/rhymes'
       preLoaderRoute: typeof EnglishPhonicsRhymesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/english/phonics/long-vowels': {
-      id: '/english/phonics/long-vowels'
-      path: '/english/phonics/long-vowels'
-      fullPath: '/english/phonics/long-vowels'
-      preLoaderRoute: typeof EnglishPhonicsLongVowelsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/english/phonics/letter-sounds': {
-      id: '/english/phonics/letter-sounds'
-      path: '/english/phonics/letter-sounds'
-      fullPath: '/english/phonics/letter-sounds'
-      preLoaderRoute: typeof EnglishPhonicsLetterSoundsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
     }
     '/english/phonics/cvc-words': {
       id: '/english/phonics/cvc-words'
-      path: '/english/phonics/cvc-words'
+      path: '/cvc-words'
       fullPath: '/english/phonics/cvc-words'
       preLoaderRoute: typeof EnglishPhonicsCvcWordsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/english/phonics/blends': {
-      id: '/english/phonics/blends'
-      path: '/english/phonics/blends'
-      fullPath: '/english/phonics/blends'
-      preLoaderRoute: typeof EnglishPhonicsBlendsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EnglishPhonicsRoute
     }
   }
 }
@@ -767,14 +682,18 @@ const rootRouteChildren: RootRouteChildren = {
   EnglishIndexRoute: EnglishIndexRoute,
   EvsIndexRoute: EvsIndexRoute,
   MathIndexRoute: MathIndexRoute,
-  EnglishPhonicsBlendsRoute: EnglishPhonicsBlendsRoute,
-  EnglishPhonicsCvcWordsRoute: EnglishPhonicsCvcWordsRoute,
-  EnglishPhonicsLetterSoundsRoute: EnglishPhonicsLetterSoundsRoute,
-  EnglishPhonicsLongVowelsRoute: EnglishPhonicsLongVowelsRoute,
-  EnglishPhonicsRhymesRoute: EnglishPhonicsRhymesRoute,
-  EnglishPhonicsShortVowelsRoute: EnglishPhonicsShortVowelsRoute,
   EnglishPhonicsIndexRoute: EnglishPhonicsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
