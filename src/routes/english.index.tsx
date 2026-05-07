@@ -18,6 +18,7 @@ const lessonsByLevel: Record<Level, Array<{ id: string; to: string; title: strin
     { id: "en.sight", to: "/english/sight-words", title: "Sight Words", emoji: "📖" },
     { id: "en.digraphs", to: "/english/digraphs", title: "Digraphs", emoji: "🔠" },
     { id: "en.sentences", to: "/english/sentences", title: "Picture Words", emoji: "🖼️" },
+    { id: "en.speech", to: "/english/speech", title: "Speech", emoji: "💬" },
   ],
   advanced: [
     { id: "en.spelling", to: "/english/spelling", title: "Spelling", emoji: "🧩" },

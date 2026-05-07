@@ -39,6 +39,7 @@ import { Route as EnglishDigraphsRouteImport } from './routes/english.digraphs'
 import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 import { Route as EnglishSpeechIndexRouteImport } from './routes/english.speech.index'
 import { Route as EnglishPhonicsIndexRouteImport } from './routes/english.phonics.index'
+import { Route as EnglishSpeechTypeRouteImport } from './routes/english.speech.$type'
 import { Route as EnglishPhonicsTrickyWordsRouteImport } from './routes/english.phonics.tricky-words'
 import { Route as EnglishPhonicsRhymesRouteImport } from './routes/english.phonics.rhymes'
 import { Route as EnglishPhonicsGroup7RouteImport } from './routes/english.phonics.group-7'
@@ -201,6 +202,11 @@ const EnglishPhonicsIndexRoute = EnglishPhonicsIndexRouteImport.update({
   path: '/english/phonics/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnglishSpeechTypeRoute = EnglishSpeechTypeRouteImport.update({
+  id: '/english/speech/$type',
+  path: '/english/speech/$type',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnglishPhonicsTrickyWordsRoute =
   EnglishPhonicsTrickyWordsRouteImport.update({
     id: '/english/phonics/tricky-words',
@@ -298,6 +304,7 @@ export interface FileRoutesByFullPath {
   '/english/phonics/group-7': typeof EnglishPhonicsGroup7Route
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
   '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
+  '/english/speech/$type': typeof EnglishSpeechTypeRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
   '/english/speech/': typeof EnglishSpeechIndexRoute
 }
@@ -341,6 +348,7 @@ export interface FileRoutesByTo {
   '/english/phonics/group-7': typeof EnglishPhonicsGroup7Route
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
   '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
+  '/english/speech/$type': typeof EnglishSpeechTypeRoute
   '/english/phonics': typeof EnglishPhonicsIndexRoute
   '/english/speech': typeof EnglishSpeechIndexRoute
 }
@@ -385,6 +393,7 @@ export interface FileRoutesById {
   '/english/phonics/group-7': typeof EnglishPhonicsGroup7Route
   '/english/phonics/rhymes': typeof EnglishPhonicsRhymesRoute
   '/english/phonics/tricky-words': typeof EnglishPhonicsTrickyWordsRoute
+  '/english/speech/$type': typeof EnglishSpeechTypeRoute
   '/english/phonics/': typeof EnglishPhonicsIndexRoute
   '/english/speech/': typeof EnglishSpeechIndexRoute
 }
@@ -430,6 +439,7 @@ export interface FileRouteTypes {
     | '/english/phonics/group-7'
     | '/english/phonics/rhymes'
     | '/english/phonics/tricky-words'
+    | '/english/speech/$type'
     | '/english/phonics/'
     | '/english/speech/'
   fileRoutesByTo: FileRoutesByTo
@@ -473,6 +483,7 @@ export interface FileRouteTypes {
     | '/english/phonics/group-7'
     | '/english/phonics/rhymes'
     | '/english/phonics/tricky-words'
+    | '/english/speech/$type'
     | '/english/phonics'
     | '/english/speech'
   id:
@@ -516,6 +527,7 @@ export interface FileRouteTypes {
     | '/english/phonics/group-7'
     | '/english/phonics/rhymes'
     | '/english/phonics/tricky-words'
+    | '/english/speech/$type'
     | '/english/phonics/'
     | '/english/speech/'
   fileRoutesById: FileRoutesById
@@ -560,6 +572,7 @@ export interface RootRouteChildren {
   EnglishPhonicsGroup7Route: typeof EnglishPhonicsGroup7Route
   EnglishPhonicsRhymesRoute: typeof EnglishPhonicsRhymesRoute
   EnglishPhonicsTrickyWordsRoute: typeof EnglishPhonicsTrickyWordsRoute
+  EnglishSpeechTypeRoute: typeof EnglishSpeechTypeRoute
   EnglishPhonicsIndexRoute: typeof EnglishPhonicsIndexRoute
   EnglishSpeechIndexRoute: typeof EnglishSpeechIndexRoute
 }
@@ -776,6 +789,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnglishPhonicsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/english/speech/$type': {
+      id: '/english/speech/$type'
+      path: '/english/speech/$type'
+      fullPath: '/english/speech/$type'
+      preLoaderRoute: typeof EnglishSpeechTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/english/phonics/tricky-words': {
       id: '/english/phonics/tricky-words'
       path: '/english/phonics/tricky-words'
@@ -896,6 +916,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnglishPhonicsGroup7Route: EnglishPhonicsGroup7Route,
   EnglishPhonicsRhymesRoute: EnglishPhonicsRhymesRoute,
   EnglishPhonicsTrickyWordsRoute: EnglishPhonicsTrickyWordsRoute,
+  EnglishSpeechTypeRoute: EnglishSpeechTypeRoute,
   EnglishPhonicsIndexRoute: EnglishPhonicsIndexRoute,
   EnglishSpeechIndexRoute: EnglishSpeechIndexRoute,
 }
