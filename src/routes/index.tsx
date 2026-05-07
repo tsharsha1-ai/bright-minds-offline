@@ -74,7 +74,22 @@ function Home() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+      <Link
+        to="/assessment"
+        className="mx-auto mt-8 flex w-full max-w-5xl items-center justify-between gap-4 rounded-3xl p-5 shadow-sm ring-1 ring-border transition active:scale-[0.99]"
+        style={{ background: "linear-gradient(135deg, var(--star) 0%, var(--english) 100%)" }}
+      >
+        <div className="flex items-center gap-4">
+          <div className="text-5xl">🏆</div>
+          <div className="text-left">
+            <div className="text-xl font-bold text-foreground md:text-2xl">Daily Practice</div>
+            <div className="text-sm text-foreground/80">Mix of Math, Letters &amp; World</div>
+          </div>
+        </div>
+        <div className="rounded-2xl bg-background/80 px-4 py-2 text-sm font-semibold text-foreground">Start →</div>
+      </Link>
+
+      <div className="mx-auto mt-6 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
         {subjects.map((s, i) => (
           <div
             key={s.key}
