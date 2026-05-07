@@ -39,13 +39,9 @@ function Home() {
   return (
     <div className="relative flex min-h-screen flex-col bg-background px-4 py-6 md:px-10">
       <div className="flex items-center justify-between">
-        <motion.h1
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold text-foreground md:text-4xl"
-        >
+        <h1 className="animate-in fade-in slide-in-from-top-2 text-3xl font-bold text-foreground duration-500 md:text-4xl">
           Little Learners
-        </motion.h1>
+        </h1>
 
         <div className="flex items-center gap-2">
           <button
