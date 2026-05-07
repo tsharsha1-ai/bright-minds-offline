@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 export function SubjectTile({
@@ -18,14 +17,13 @@ export function SubjectTile({
   disabled?: boolean;
 }) {
   const inner = (
-    <motion.div
-      whileTap={disabled ? undefined : { scale: 0.96 }}
-      className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-[2rem] p-6 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.15)] ring-1 ring-black/5"
+    <div
+      className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-[2rem] p-6 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.15)] ring-1 ring-black/5 transition-transform duration-150 active:scale-[0.96]"
       style={{ backgroundColor: bg, color: fg, opacity: disabled ? 0.4 : 1 }}
     >
       <div className="text-[6rem] leading-none drop-shadow-sm">{emoji}</div>
       <div className="text-2xl font-semibold md:text-3xl">{title}</div>
-    </motion.div>
+    </div>
   );
 
   if (disabled) {
@@ -51,9 +49,8 @@ export function LessonCard({
 }) {
   return (
     <Link to={to}>
-      <motion.div
-        whileTap={{ scale: 0.97 }}
-        className="relative flex h-44 flex-col items-center justify-center gap-2 rounded-3xl bg-card p-4 text-center shadow-sm ring-1 ring-border"
+      <div
+        className="relative flex h-44 flex-col items-center justify-center gap-2 rounded-3xl bg-card p-4 text-center shadow-sm ring-1 ring-border transition-transform duration-150 active:scale-[0.97]"
       >
         <div className="text-6xl">{emoji}</div>
         <div className="text-lg font-semibold text-foreground">{title}</div>
@@ -71,7 +68,7 @@ export function LessonCard({
             aria-label={status}
           />
         )}
-      </motion.div>
+      </div>
     </Link>
   );
 }

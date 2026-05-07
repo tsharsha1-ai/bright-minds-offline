@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Settings as SettingsIcon, Volume2, VolumeX } from "lucide-react";
-import { motion } from "framer-motion";
 import { SubjectTile } from "@/components/learning";
 import { useSettings } from "@/hooks/use-settings";
 
@@ -40,13 +39,9 @@ function Home() {
   return (
     <div className="relative flex min-h-screen flex-col bg-background px-4 py-6 md:px-10">
       <div className="flex items-center justify-between">
-        <motion.h1
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold text-foreground md:text-4xl"
-        >
+        <h1 className="animate-in fade-in slide-in-from-top-2 text-3xl font-bold text-foreground duration-500 md:text-4xl">
           Little Learners
-        </motion.h1>
+        </h1>
 
         <div className="flex items-center gap-2">
           <button
@@ -74,22 +69,12 @@ function Home() {
         Pick something to learn today.
       </p>
 
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.08 } },
-        }}
-        className="mx-auto mt-10 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8"
-      >
-        {subjects.map((s) => (
-          <motion.div
+      <div className="mx-auto mt-10 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+        {subjects.map((s, i) => (
+          <div
             key={s.key}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0 },
-            }}
+            className="animate-in fade-in slide-in-from-bottom-3 duration-500"
+            style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
           >
             <SubjectTile
               to={s.to}
@@ -99,9 +84,9 @@ function Home() {
               fg={s.fg}
               disabled={!settings.subjectsEnabled[s.key]}
             />
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
