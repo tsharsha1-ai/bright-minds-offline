@@ -1,6 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { Settings as SettingsIcon, Volume2, VolumeX, Users } from "lucide-react";
 import { SubjectTile } from "@/components/learning";
+import { ModeTabs } from "@/components/ModeTabs";
+import { useMode } from "@/hooks/use-mode";
 import { useSettings } from "@/hooks/use-settings";
 import { useProfiles } from "@/hooks/use-profiles";
 import { ProfilePicker } from "@/components/ProfilePicker";
