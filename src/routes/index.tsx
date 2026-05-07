@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Settings as SettingsIcon, Volume2, VolumeX } from "lucide-react";
-import { motion } from "framer-motion";
 import { SubjectTile } from "@/components/learning";
 import { useSettings } from "@/hooks/use-settings";
 
