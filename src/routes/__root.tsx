@@ -69,17 +69,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
       },
       { name: "theme-color", content: "#cfe6f5" },
-      { title: "Little Learners — Calm Grade 1 Learning" },
+      { title: "Little Learners — Calm Early Learning" },
       {
         name: "description",
         content:
           "A calm, ad-free, offline learning app for Grade 1 children — Math, English, and the World.",
       },
-      { property: "og:title", content: "Little Learners" },
+      { property: "og:title", content: "Little Learners — Calm Early Learning" },
       {
         property: "og:description",
         content: "Calm, offline, child-friendly Grade 1 learning.",
       },
+      { name: "twitter:title", content: "Little Learners — Calm Early Learning" },
+      { name: "description", content: "A FREE, ad-free Android app for Grade 1 children to learn Math, English, and General Knowledge offline." },
+      { property: "og:description", content: "A FREE, ad-free Android app for Grade 1 children to learn Math, English, and General Knowledge offline." },
+      { name: "twitter:description", content: "A FREE, ad-free Android app for Grade 1 children to learn Math, English, and General Knowledge offline." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1213cc7c-efda-493f-9454-e4e4cfe3945f/id-preview-eafbe3e5--76edf61d-9377-492e-a82e-8f66c975990f.lovable.app-1778128859906.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1213cc7c-efda-493f-9454-e4e4cfe3945f/id-preview-eafbe3e5--76edf61d-9377-492e-a82e-8f66c975990f.lovable.app-1778128859906.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
