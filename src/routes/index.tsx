@@ -89,7 +89,7 @@ function Home() {
         <div className="rounded-2xl bg-background/80 px-4 py-2 text-sm font-semibold text-foreground">Start →</div>
       </Link>
 
-      <div className="mx-auto mt-6 grid w-full max-w-5xl flex-1 grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+      <div className="mx-auto mt-6 grid w-full max-w-5xl flex-1 grid-cols-3 gap-3 sm:gap-6 md:gap-8">
         {subjects.map((s, i) => (
           <div
             key={s.key}
