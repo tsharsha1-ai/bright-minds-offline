@@ -49,9 +49,8 @@ export function LessonCard({
 }) {
   return (
     <Link to={to}>
-      <motion.div
-        whileTap={{ scale: 0.97 }}
-        className="relative flex h-44 flex-col items-center justify-center gap-2 rounded-3xl bg-card p-4 text-center shadow-sm ring-1 ring-border"
+      <div
+        className="relative flex h-44 flex-col items-center justify-center gap-2 rounded-3xl bg-card p-4 text-center shadow-sm ring-1 ring-border transition-transform duration-150 active:scale-[0.97]"
       >
         <div className="text-6xl">{emoji}</div>
         <div className="text-lg font-semibold text-foreground">{title}</div>
@@ -69,7 +68,7 @@ export function LessonCard({
             aria-label={status}
           />
         )}
-      </motion.div>
+      </div>
     </Link>
   );
 }
