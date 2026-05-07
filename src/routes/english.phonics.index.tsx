@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { LessonCard, PageShell } from "@/components/learning";
 import { useProgress } from "@/hooks/use-progress";
 
-export const Route = createFileRoute("/english/phonics")({
+export const Route = createFileRoute("/english/phonics/")({
   component: PhonicsHub,
 });
 
