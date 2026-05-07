@@ -18,6 +18,11 @@ import { Route as MathNumbersRouteImport } from './routes/math.numbers'
 import { Route as MathCountingRouteImport } from './routes/math.counting'
 import { Route as MathCompareRouteImport } from './routes/math.compare'
 import { Route as MathAddsubRouteImport } from './routes/math.addsub'
+import { Route as EnglishTracingRouteImport } from './routes/english.tracing'
+import { Route as EnglishSightWordsRouteImport } from './routes/english.sight-words'
+import { Route as EnglishSentencesRouteImport } from './routes/english.sentences'
+import { Route as EnglishPhonicsRouteImport } from './routes/english.phonics'
+import { Route as EnglishAlphabetRouteImport } from './routes/english.alphabet'
 
 const MathRoute = MathRouteImport.update({
   id: '/math',
@@ -64,12 +69,42 @@ const MathAddsubRoute = MathAddsubRouteImport.update({
   path: '/addsub',
   getParentRoute: () => MathRoute,
 } as any)
+const EnglishTracingRoute = EnglishTracingRouteImport.update({
+  id: '/tracing',
+  path: '/tracing',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishSightWordsRoute = EnglishSightWordsRouteImport.update({
+  id: '/sight-words',
+  path: '/sight-words',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishSentencesRoute = EnglishSentencesRouteImport.update({
+  id: '/sentences',
+  path: '/sentences',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishPhonicsRoute = EnglishPhonicsRouteImport.update({
+  id: '/phonics',
+  path: '/phonics',
+  getParentRoute: () => EnglishRoute,
+} as any)
+const EnglishAlphabetRoute = EnglishAlphabetRouteImport.update({
+  id: '/alphabet',
+  path: '/alphabet',
+  getParentRoute: () => EnglishRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/english': typeof EnglishRoute
+  '/english': typeof EnglishRouteWithChildren
   '/evs': typeof EvsRoute
   '/math': typeof MathRouteWithChildren
+  '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/sentences': typeof EnglishSentencesRoute
+  '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/tracing': typeof EnglishTracingRoute
   '/math/addsub': typeof MathAddsubRoute
   '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
@@ -78,9 +113,14 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/english': typeof EnglishRoute
+  '/english': typeof EnglishRouteWithChildren
   '/evs': typeof EvsRoute
   '/math': typeof MathRouteWithChildren
+  '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/sentences': typeof EnglishSentencesRoute
+  '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/tracing': typeof EnglishTracingRoute
   '/math/addsub': typeof MathAddsubRoute
   '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
@@ -90,9 +130,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/english': typeof EnglishRoute
+  '/english': typeof EnglishRouteWithChildren
   '/evs': typeof EvsRoute
   '/math': typeof MathRouteWithChildren
+  '/english/alphabet': typeof EnglishAlphabetRoute
+  '/english/phonics': typeof EnglishPhonicsRoute
+  '/english/sentences': typeof EnglishSentencesRoute
+  '/english/sight-words': typeof EnglishSightWordsRoute
+  '/english/tracing': typeof EnglishTracingRoute
   '/math/addsub': typeof MathAddsubRoute
   '/math/compare': typeof MathCompareRoute
   '/math/counting': typeof MathCountingRoute
@@ -106,6 +151,11 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/english/alphabet'
+    | '/english/phonics'
+    | '/english/sentences'
+    | '/english/sight-words'
+    | '/english/tracing'
     | '/math/addsub'
     | '/math/compare'
     | '/math/counting'
@@ -117,6 +167,11 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/english/alphabet'
+    | '/english/phonics'
+    | '/english/sentences'
+    | '/english/sight-words'
+    | '/english/tracing'
     | '/math/addsub'
     | '/math/compare'
     | '/math/counting'
@@ -128,6 +183,11 @@ export interface FileRouteTypes {
     | '/english'
     | '/evs'
     | '/math'
+    | '/english/alphabet'
+    | '/english/phonics'
+    | '/english/sentences'
+    | '/english/sight-words'
+    | '/english/tracing'
     | '/math/addsub'
     | '/math/compare'
     | '/math/counting'
@@ -137,7 +197,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  EnglishRoute: typeof EnglishRoute
+  EnglishRoute: typeof EnglishRouteWithChildren
   EvsRoute: typeof EvsRoute
   MathRoute: typeof MathRouteWithChildren
 }
@@ -207,8 +267,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MathAddsubRouteImport
       parentRoute: typeof MathRoute
     }
+    '/english/tracing': {
+      id: '/english/tracing'
+      path: '/tracing'
+      fullPath: '/english/tracing'
+      preLoaderRoute: typeof EnglishTracingRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/sight-words': {
+      id: '/english/sight-words'
+      path: '/sight-words'
+      fullPath: '/english/sight-words'
+      preLoaderRoute: typeof EnglishSightWordsRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/sentences': {
+      id: '/english/sentences'
+      path: '/sentences'
+      fullPath: '/english/sentences'
+      preLoaderRoute: typeof EnglishSentencesRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/phonics': {
+      id: '/english/phonics'
+      path: '/phonics'
+      fullPath: '/english/phonics'
+      preLoaderRoute: typeof EnglishPhonicsRouteImport
+      parentRoute: typeof EnglishRoute
+    }
+    '/english/alphabet': {
+      id: '/english/alphabet'
+      path: '/alphabet'
+      fullPath: '/english/alphabet'
+      preLoaderRoute: typeof EnglishAlphabetRouteImport
+      parentRoute: typeof EnglishRoute
+    }
   }
 }
+
+interface EnglishRouteChildren {
+  EnglishAlphabetRoute: typeof EnglishAlphabetRoute
+  EnglishPhonicsRoute: typeof EnglishPhonicsRoute
+  EnglishSentencesRoute: typeof EnglishSentencesRoute
+  EnglishSightWordsRoute: typeof EnglishSightWordsRoute
+  EnglishTracingRoute: typeof EnglishTracingRoute
+}
+
+const EnglishRouteChildren: EnglishRouteChildren = {
+  EnglishAlphabetRoute: EnglishAlphabetRoute,
+  EnglishPhonicsRoute: EnglishPhonicsRoute,
+  EnglishSentencesRoute: EnglishSentencesRoute,
+  EnglishSightWordsRoute: EnglishSightWordsRoute,
+  EnglishTracingRoute: EnglishTracingRoute,
+}
+
+const EnglishRouteWithChildren =
+  EnglishRoute._addFileChildren(EnglishRouteChildren)
 
 interface MathRouteChildren {
   MathAddsubRoute: typeof MathAddsubRoute
@@ -230,7 +344,7 @@ const MathRouteWithChildren = MathRoute._addFileChildren(MathRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  EnglishRoute: EnglishRoute,
+  EnglishRoute: EnglishRouteWithChildren,
   EvsRoute: EvsRoute,
   MathRoute: MathRouteWithChildren,
 }
